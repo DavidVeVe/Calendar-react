@@ -1,17 +1,24 @@
 import {useReducer} from "react";
 import calendarReducer from "../../reducers/calendarReducer/calendarReducer";
+import helper from "../../helper";
 import { CALENDAR_REDUCER_CONSTANTS } from '../../constants'
 
 const { GET_NEXT_MONTH, GET_PREVIOUS_MONTH } = CALENDAR_REDUCER_CONSTANTS
+const { setMonthName, getDaysInMonth } = helper
 
 export default function useCalendar  () {
     const initialDate = new Date()
+    const initialYear = initialDate.getFullYear()
+    const initialMonth = initialDate.getMonth()
 
     const calendar = useReducer(calendarReducer,{
         events: [],
-        month: initialDate.getMonth(),
+        month: initialMonth,
+        monthName: setMonthName(initialDate),
         day: initialDate.getDate(),
-        year: initialDate.getFullYear(),
+        year: initialYear,
+        daysInCurrentMonth: getDaysInMonth(initialYear, initialMonth),
+        initialDay: initialDate.getDay(),
         expired: false,
         showEvent: false,
         timezone: 'utc',
@@ -22,8 +29,7 @@ export default function useCalendar  () {
         }
     })
 
-    const [{ year, month, day }, dispatch] = calendar
-
+    const [{initialDay}, dispatch] = calendar
 
     function getNextMonth () {
         dispatch({ type: GET_NEXT_MONTH })

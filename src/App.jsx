@@ -19,15 +19,15 @@ function App() {
     //     return new Date(year, m, 0).getDate();
     // };
 
-const [{ navigationEvents: { getNextMonth, getPreviousMonth }, date, month, year },dispatch] = useCalendar()
-    console.log(date)
+const [{ navigationEvents: { getNextMonth, getPreviousMonth }, date, monthName, initialDay, daysInCurrentMonth }, dispatch] = useCalendar()
 
   return (
     <div className="App" >
         <button onClick={getPreviousMonth}>Previous month</button>
         <button onClick={getNextMonth}>Month ahead</button>
-        {date.toLocaleString('default', { month: 'long' })}
+        {monthName}
         {date.getFullYear()}
+        {daysInCurrentMonth}
     </div>
   )
 }
