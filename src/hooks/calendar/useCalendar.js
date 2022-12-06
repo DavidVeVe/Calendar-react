@@ -4,12 +4,15 @@ import helper from "../../helper";
 import { CALENDAR_REDUCER_CONSTANTS } from '../../constants'
 
 const { GET_NEXT_MONTH, GET_PREVIOUS_MONTH } = CALENDAR_REDUCER_CONSTANTS
-const { setMonthName, getDaysInMonth } = helper
+const { setMonthName, getDaysInMonth, monthConfig } = helper
 
 export default function useCalendar  () {
     const initialDate = new Date()
     const initialYear = initialDate.getFullYear()
     const initialMonth = initialDate.getMonth()
+    const daysInCurrentMonth = getDaysInMonth(initialYear, initialMonth)
+
+    const monthDaysConfig = monthConfig(daysInCurrentMonth, initialYear, initialMonth)
 
     const calendar = useReducer(calendarReducer,{
         events: [],
@@ -17,7 +20,8 @@ export default function useCalendar  () {
         monthName: setMonthName(initialDate),
         day: initialDate.getDate(),
         year: initialYear,
-        daysInCurrentMonth: getDaysInMonth(initialYear, initialMonth),
+        daysInCurrentMonth,
+        monthDaysConfig,
         initialDay: initialDate.getDay(),
         expired: false,
         showEvent: false,

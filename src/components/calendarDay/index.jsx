@@ -1,14 +1,15 @@
 import DayEvent from "../DayEvent";
 import './calendarDay.scss'
 
-function CalendarDay ({dayNumber, activeMonth, dayEvents, isActive}) {
-    const activeEvents = dayEvents.map((event) => {
-        return <DayEvent eventData={event} />
-    })
-    return <div className="calendar-day">
-        <span>{dayNumber}</span>
-        {activeEvents}
-    </div>
+function CalendarDay ({dayNumber, dayName, activeMonth, dayEvents, isActive}) {
+    return (
+        <div className="calendar-day__wrapper">
+            <span>{dayName}</span>
+            <div className="calendar-day">
+                <span className="calendar-day__number" style={{color: "black"}}>{dayNumber}</span>
+            </div>
+        </div>
+    )
 }
 
 export default CalendarDay
