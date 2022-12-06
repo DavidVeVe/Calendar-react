@@ -3,7 +3,7 @@ import useCalendar from "./hooks/calendar/useCalendar";
 import './App.css'
 
 function App() {
-    const [{ navigationEvents: { getNextMonth, getPreviousMonth }, date, monthName, monthDaysConfig, daysInCurrentMonth }, dispatch] = useCalendar()
+    const [{ navigationEvents: { getNextMonth, getPreviousMonth }, date, monthDaysConfig }] = useCalendar()
 
   return (
     <div className="App" >
