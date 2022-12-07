@@ -1,7 +1,9 @@
 import { DAYS_OF_THE_WEEK } from "./constants";
 
-const setDate = (y, m, d) => new Date(y, m, d);
+const createDate = (y, m, d) => new Date(y, m, d)
+const setDate = (y, m, d) => createDate(y, m, d);
 const setMonthName = (date) => date.toLocaleString('default', { month: 'long' })
+const setPrevMonthName = (y, m, d) => createDate(y, m, d).toLocaleString('default', { month: 'long' })
 const getDaysInMonth = (y, m) => {
     return new Date(y, m + 1, 0).getDate();
 };
@@ -12,4 +14,4 @@ const monthConfig = (daysInCurrentMonth, y, m) => {
     })
 }
 
-export default { setDate, setMonthName, getDaysInMonth, monthConfig }
+export default { setDate, setMonthName, getDaysInMonth, monthConfig, setPrevMonthName }
