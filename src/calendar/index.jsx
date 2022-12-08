@@ -36,13 +36,13 @@ function Calendar({ date }) {
 
   return (
     <>
-      {MONTHS[month]}
-      {year}
+      <span className="">{MONTHS[month]}</span>
+      <span>{year}</span>
       <CalendarNavigation
         getNextMonth={() => setNewMonth({ ...setNewMonthArgs }, true)}
         getPrevMonth={() => setNewMonth({ ...setNewMonthArgs }, false)}
       />
-      <CalendarGrid daysInCurrentMonth={formattedMonth} />
+      <CalendarGrid daysInCurrentMonth={formattedMonth} daysInPrevMonth={[{dayNumber: 45, dayName: '45'},{dayNumber: 46, dayName: '46'}]} />
     </>
   );
 }
