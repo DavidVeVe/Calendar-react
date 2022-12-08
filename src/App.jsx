@@ -4,13 +4,13 @@ import {useState} from "react";
 import Calendar from "./calendar";
 import './App.css'
 
-function App() {
+function App(date1 = date) {
 
   const [date, setDate] = useState(new Date())
 
   return (
     <div className="App" >
-      <Calendar date={date} />
+      <Calendar date={date1} />
     </div>
   )
 }
