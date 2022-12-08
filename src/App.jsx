@@ -1,24 +1,16 @@
-import CalendarDay from "./components/calendarDay";
+import CalendarDay from "./components/CalendarDay";
 import useCalendar from "./hooks/calendar/useCalendar";
+import {useState} from "react";
+import Calendar from "./calendar";
 import './App.css'
 
 function App() {
-    const [{ navigationEvents: { getNextMonth, getPreviousMonth }, date, monthDaysConfig, monthName, prevMonthName, prevMonthDaysConfig }] = useCalendar()
+
+  const [date, setDate] = useState(new Date())
 
   return (
     <div className="App" >
-        <button onClick={getPreviousMonth}>Previous month</button>
-        <button onClick={getNextMonth}>Month ahead</button>
-        {date.getFullYear()}
-        <p>previous: {prevMonthName}</p>
-        <p>current: {monthName}</p>
-
-        <section className="calendar-days">
-            {monthDaysConfig.map((day) => {
-                const {dayNumber, dayName } = day
-                return <CalendarDay key={dayNumber} dayNumber={dayNumber} dayName={dayName} />
-        })}
-        </section>
+      <Calendar date={date} />
     </div>
   )
 }
