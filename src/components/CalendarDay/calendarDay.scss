@@ -1,4 +1,4 @@
-.calendar-day {
+.calendar-day, .calendar-day--is-from-prev-month {
   background-color: #fff;
   width: 165px;
   height: 171px;
@@ -8,5 +8,11 @@
 
   &__number {
     color: #2D224C;
+  }
+
+  &--is-from-prev-month {
+    .calendar-day__number--is-from-prev-month {
+        color: red;
+    }
   }
 }

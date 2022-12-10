@@ -1,14 +1,24 @@
 import "./calendarDay.scss";
 
 function CalendarDay({ dayNumber, dayName, isFromPrevMonth }) {
-    const getClassNames = (condition) => {
-        const initialClassName = 'calendar-day'
-        condition ? `${initialClassName}--is-from-prev-month` : initialClassName
-    }
+  const getClassNames = (condition) => {
+    const initialElementClassName = "calendar-day";
+    const initialBlockClassName = "calendar-day__number";
+    return {
+      elementClassName: condition
+        ? `${initialElementClassName}--is-from-prev-month`
+        : initialElementClassName,
+      blockClassName: condition
+        ? `${initialBlockClassName}--is-from-prev-month`
+        : initialBlockClassName,
+    };
+  };
+
+  const { elementClassName, blockClassName } = getClassNames(isFromPrevMonth);
 
   return (
-    <div className="calendar-day">
-      <span className="calendar-day__number">
+    <div className={elementClassName}>
+      <span className={blockClassName}>
         <span>{dayName}</span>
         <span>{dayNumber}</span>
       </span>

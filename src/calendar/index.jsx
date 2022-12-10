@@ -13,8 +13,8 @@ function Calendar({ date }) {
     getDaysInMonth(year, month)
   );
   const [prevMonthDays, setPrevMonthDays] = useState(
-      getDaysInMonth(year, month - 1)
-  )
+    getDaysInMonth(year, month - 1)
+  );
 
   const monthSetter = (value) => {
     setMonth(value);
@@ -37,11 +37,15 @@ function Calendar({ date }) {
     monthSetter,
     yearSetter,
     currentMonthDaysSetter,
-    prevMonthDaysSetter
+    prevMonthDaysSetter,
   };
 
   const monthFormatted = getFormattedMonthConfig(currentMonthDays, year, month);
-  const prevMonthFormatted = getFormattedMonthConfig(prevMonthDays, year, month - 1);
+  const prevMonthFormatted = getFormattedMonthConfig(
+    prevMonthDays,
+    year,
+    month - 1
+  );
 
   return (
     <>
@@ -51,7 +55,10 @@ function Calendar({ date }) {
         getNextMonth={() => setNewMonth({ ...setNewMonthArgs }, true)}
         getPrevMonth={() => setNewMonth({ ...setNewMonthArgs }, false)}
       />
-      <CalendarGrid currentMonthDays={monthFormatted} prevMonthDays={prevMonthFormatted} />
+      <CalendarGrid
+        currentMonthDays={monthFormatted}
+        prevMonthDays={prevMonthFormatted}
+      />
     </>
   );
 }
