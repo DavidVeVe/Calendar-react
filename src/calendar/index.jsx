@@ -4,14 +4,17 @@ import { MONTHS } from "../constants";
 import { useState } from "react";
 import helper from "../helper";
 
-const { setNewMonth, getFormattedMonth, getDaysInMonth } = helper;
+const { setNewMonth, getFormattedMonthConfig, getDaysInMonth } = helper;
 
 function Calendar({ date }) {
   const [month, setMonth] = useState(date.getMonth());
   const [year, setYear] = useState(date.getFullYear());
-  const [daysInCurrentMonth, setDaysInCurrentMonth] = useState(
+  const [currentMonthDays, setCurrentMonthDays] = useState(
     getDaysInMonth(year, month)
   );
+  const [prevMonthDays, setPrevMonthDays] = useState(
+      getDaysInMonth(year, month - 1)
+  )
 
   const monthSetter = (value) => {
     setMonth(value);
@@ -20,8 +23,12 @@ function Calendar({ date }) {
     setYear(value);
   };
 
-  const daysSetter = (value) => {
-    setDaysInCurrentMonth(value);
+  const currentMonthDaysSetter = (value) => {
+    setCurrentMonthDays(value);
+  };
+
+  const prevMonthDaysSetter = (value) => {
+    setPrevMonthDays(value);
   };
 
   const setNewMonthArgs = {
@@ -29,10 +36,12 @@ function Calendar({ date }) {
     year,
     monthSetter,
     yearSetter,
-    daysSetter,
+    currentMonthDaysSetter,
+    prevMonthDaysSetter
   };
 
-  const formattedMonth = getFormattedMonth(daysInCurrentMonth, year, month);
+  const monthFormatted = getFormattedMonthConfig(currentMonthDays, year, month);
+  const prevMonthFormatted = getFormattedMonthConfig(prevMonthDays, year, month - 1);
 
   return (
     <>
@@ -42,7 +51,7 @@ function Calendar({ date }) {
         getNextMonth={() => setNewMonth({ ...setNewMonthArgs }, true)}
         getPrevMonth={() => setNewMonth({ ...setNewMonthArgs }, false)}
       />
-      <CalendarGrid daysInCurrentMonth={formattedMonth} daysInPrevMonth={[{dayNumber: 45, dayName: '45'},{dayNumber: 46, dayName: '46'}]} />
+      <CalendarGrid currentMonthDays={monthFormatted} prevMonthDays={prevMonthFormatted} />
     </>
   );
 }

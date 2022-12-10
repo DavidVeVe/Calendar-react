@@ -4,7 +4,8 @@ function CalendarDay({ dayNumber, dayName }) {
   return (
     <div className="calendar-day">
       <span className="calendar-day__number" style={{ color: "black" }}>
-        {dayNumber}
+        <span style={{position: "relative", top: "-25px", color: "white"}}>{dayName}</span>
+        <span>{dayNumber}</span>
       </span>
     </div>
   );

@@ -9,19 +9,22 @@ const setPrevMonthName = (y, m, d) =>
 const getDaysInMonth = (y, m) => {
   return new Date(y, m + 1, 0).getDate();
 };
-const getFormattedMonth = (daysInCurrentMonth, y, m) => {
-  return [...Array(daysInCurrentMonth).keys()].map((day) => {
-    const dayName =
-      DAYS_OF_THE_WEEK[
-        new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(
-          setDate(y, m, day + 1)
-        )
-      ];
-    return { dayNumber: day + 1, dayName };
-  });
+const getFormattedMonthConfig = (daysInCurrentMonth, y, m) => {
+  return {
+    days: [...Array(daysInCurrentMonth).keys()].map((day) => {
+      const dayName =
+          DAYS_OF_THE_WEEK[
+              new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(
+                  setDate(y, m, day + 1)
+              )
+              ];
+      return { dayNumber: day + 1, dayName };
+    }),
+    dayIndex: createDate(y, m, 1).getDay()
+  }
 };
 
-// const getFormattedMonth = (currentMonth, prevMonth) => {
+// const getFormattedMonthConfig = (currentMonth, prevMonth) => {
 //     const firstMonthDay = currentMonth[0].dayName
 //     if (currentMonth[0].dayName !== "MON") {
 //         const prevDays = SHORT_DAYS_OF_THE_WEEK[firstMonthDay]
@@ -36,23 +39,26 @@ const getNewMonthValues = (month, isNextMonth) => ({
   newMonthReset: isNextMonth ? 0 : 11,
   newYear: isNextMonth ? (prev) => prev + 1 : (prev) => prev - 1,
   newMonth: isNextMonth ? (prev) => prev + 1 : (prev) => prev - 1,
-  monthToGetDays: isNextMonth ? month + 1 : month - 1,
+  monthToGetCurrentDays: isNextMonth ? month + 1 : month - 1,
+  monthToGetPrevMonthDays: isNextMonth ? month : month - 2,
 });
 
 const setNewMonth = (
-  { month, year, monthSetter, yearSetter, daysSetter },
+  { month, year, monthSetter, yearSetter, currentMonthDaysSetter, prevMonthDaysSetter },
   isNextMonth
 ) => {
-  const { condition, newMonthReset, newYear, newMonth, monthToGetDays } =
+  const { condition, newMonthReset, newYear, newMonth, monthToGetCurrentDays, monthToGetPrevMonthDays } =
     getNewMonthValues(month, isNextMonth);
 
   if (condition) {
     monthSetter(newMonth);
-    daysSetter(getDaysInMonth(year, monthToGetDays));
+    currentMonthDaysSetter(getDaysInMonth(year, monthToGetCurrentDays));
+    prevMonthDaysSetter(getDaysInMonth(year, monthToGetPrevMonthDays));
   } else {
     yearSetter(newYear);
     monthSetter(newMonthReset);
-    daysSetter(getDaysInMonth(year, monthToGetDays));
+    currentMonthDaysSetter(getDaysInMonth(year, monthToGetCurrentDays));
+    prevMonthDaysSetter(getDaysInMonth(year, monthToGetPrevMonthDays));
   }
 };
 
@@ -62,6 +68,6 @@ export default {
   getDaysInMonth,
   // monthConfig,
   setPrevMonthName,
-  getFormattedMonth,
+  getFormattedMonthConfig,
   setNewMonth,
 };
