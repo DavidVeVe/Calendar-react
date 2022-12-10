@@ -19,7 +19,7 @@ function CalendarDay({ dayNumber, dayName, isFromPrevMonth }) {
   return (
     <div className={elementClassName}>
       <span className={blockClassName}>
-        <span>{dayName}</span>
+        <p>{dayName}</p>
         <span>{dayNumber}</span>
       </span>
     </div>

@@ -24,16 +24,6 @@ const getFormattedMonthConfig = (daysInCurrentMonth, y, m) => {
   }
 };
 
-// const getFormattedMonthConfig = (currentMonth, prevMonth) => {
-//     const firstMonthDay = currentMonth[0].dayName
-//     if (currentMonth[0].dayName !== "MON") {
-//         const prevDays = SHORT_DAYS_OF_THE_WEEK[firstMonthDay]
-//         const prevDaysArr = prevMonth.slice(-prevDays)
-//         return [...prevDaysArr, ...currentMonth]
-//     }
-//     return currentMonth
-// }
-
 const getNewMonthValues = (month, isNextMonth) => ({
   condition: isNextMonth ? month < 11 : month > 0,
   newMonthReset: isNextMonth ? 0 : 11,
@@ -66,7 +56,6 @@ export default {
   setDate,
   setMonthName,
   getDaysInMonth,
-  // monthConfig,
   setPrevMonthName,
   getFormattedMonthConfig,
   setNewMonth,
