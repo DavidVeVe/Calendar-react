@@ -10,7 +10,7 @@ function CalendarGrid({ currentMonthDays, prevMonthDays }) {
       const { dayNumber, dayName, isFromPrevMonth } = day;
       return (
         <CalendarDay
-          key={dayNumber + dayName}
+          key={dayName + Math.random()}
           dayNumber={dayNumber}
           dayName={dayName}
           isFromPrevMonth={isFromPrevMonth}
