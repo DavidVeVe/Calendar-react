@@ -1,3 +1,8 @@
+/**
+ * Description: Adds isDayDisabled to day object structure
+ * @param days - {array}
+ * @returns {array}
+ */
 const disableDaysFromDiffMonth = (days) => {
   return days.map((day) => {
     return { ...day, isDayDisabled: true }; //Adds isFromPrevMonth property to handle styles
@@ -6,8 +11,8 @@ const disableDaysFromDiffMonth = (days) => {
 
 /**
  * Description: Returns array with formatted days structure in current month, including days from prev month and days from next month
- * @param currentMonthDays
- * @param prevMonthDays
+ * @param currentMonthDays - {object}
+ * @param prevMonthDays - {object}
  * @returns {array}
  */
 const getDaysForGrid = (currentMonthDays, prevMonthDays, nextMonthDays) => {

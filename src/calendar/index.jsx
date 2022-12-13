@@ -6,6 +6,12 @@ import helper from "../helper";
 
 const { setNewMonth, getFormattedMonthConfig, getDaysInMonth } = helper;
 
+/**
+ * Description: Calendar component
+ * @param date
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function Calendar({ date }) {
   const [month, setMonth] = useState(date.getMonth());
 

@@ -1,3 +1,10 @@
+/**
+ * Description: CalendarNavigation Component
+ * @param getPrevMonth
+ * @param getNextMonth
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function CalendarNavigation({ getPrevMonth, getNextMonth }) {
   return (
     <>

@@ -1,5 +1,13 @@
 import "./calendarDay.scss";
 
+/**
+ * Description: CalendarDay Component
+ * @param dayNumber - {number}
+ * @param dayName - {string}
+ * @param isDayDisabled - {boolean}
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function CalendarDay({ dayNumber, dayName, isDayDisabled }) {
   const getClassNames = (condition) => {
     const initialElementClassName = "calendar-day";
