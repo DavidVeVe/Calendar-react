@@ -1,4 +1,7 @@
 import "./calendarNavigation.scss";
+import prevIcon from "../../assets/prev-icon.svg";
+import nextIcon from "../../assets/next-icon.svg";
+
 
 /**
  * Description: CalendarNavigation Component
@@ -14,13 +17,17 @@ function CalendarNavigation({ getPrevMonth, getNextMonth, calendarTitle }) {
       <span className="calendar__navigation__title">{calendarTitle}</span>
 
       <div className="calendar__navigation__arrows">
-        <button onClick={getPrevMonth}> Prev Month </button>
-        <button onClick={getNextMonth}> Next Month </button>
+        <button onClick={getPrevMonth}>
+          <img src={prevIcon} />
+        </button>
+        <button onClick={getNextMonth}>
+          <img src={nextIcon} />
+        </button>
       </div>
 
       <div className="calendar__navigation__buttons">
-          <button className="calendar__navigation__buttons__today" >Today</button>
-          <button>time zones</button>
+        <button className="calendar__navigation__buttons__today">Today</button>
+        <button>time zones</button>
       </div>
     </section>
   );
