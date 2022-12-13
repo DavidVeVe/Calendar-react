@@ -4,20 +4,28 @@ import "./calendarGrid.scss";
 
 const { getDaysForGrid } = helper;
 
-function CalendarGrid({ currentMonthDays, prevMonthDays }) {
-  const daysForGrid = getDaysForGrid(currentMonthDays, prevMonthDays).map(
-    (day) => {
-      const { dayNumber, dayName, isFromPrevMonth } = day;
-      return (
-        <CalendarDay
-          key={dayName + Math.random()}
-          dayNumber={dayNumber}
-          dayName={dayName}
-          isFromPrevMonth={isFromPrevMonth}
-        />
-      );
-    }
-  );
+/**
+ * @param currentMonthDays {object}
+ * @param prevMonthDays {object}
+ * @param nextMonthDays {object}
+ * @returns {JSX.Element}
+ */
+function CalendarGrid({ currentMonthDays, prevMonthDays, nextMonthDays }) {
+  const daysForGrid = getDaysForGrid(
+    currentMonthDays,
+    prevMonthDays,
+    nextMonthDays
+  ).map((day) => {
+    const { dayNumber, dayName, isDayDisabled } = day;
+    return (
+      <CalendarDay
+        key={dayName + Math.random()}
+        dayNumber={dayNumber}
+        dayName={dayName}
+        isDayDisabled={isDayDisabled}
+      />
+    );
+  });
 
   return <section className="calendar-grid">{daysForGrid}</section>;
 }

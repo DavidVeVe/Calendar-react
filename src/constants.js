@@ -37,3 +37,5 @@ export const MONTHS = [
   "November",
   "December",
 ];
+
+export const DAYS_IN_A_WEEK = 7

@@ -1,6 +1,6 @@
 import "./calendarDay.scss";
 
-function CalendarDay({ dayNumber, dayName, isFromPrevMonth }) {
+function CalendarDay({ dayNumber, dayName, isDayDisabled }) {
   const getClassNames = (condition) => {
     const initialElementClassName = "calendar-day";
     const initialBlockClassName = "calendar-day__number";
@@ -14,7 +14,7 @@ function CalendarDay({ dayNumber, dayName, isFromPrevMonth }) {
     };
   };
 
-  const { elementClassName, blockClassName } = getClassNames(isFromPrevMonth);
+  const { elementClassName, blockClassName } = getClassNames(isDayDisabled);
 
   return (
     <div className={elementClassName}>

@@ -1,28 +1,30 @@
-const getDayIndexForPrevDays = (dayIndex) => {
-  if (dayIndex === 0) {
-    dayIndex = 6;
-  } else {
-    dayIndex = dayIndex - 1;
-  }
-  return dayIndex;
+const disableDaysFromDiffMonth = (days) => {
+  return days.map((day) => {
+    return { ...day, isDayDisabled: true }; //Adds isFromPrevMonth property to handle styles
+  });
 };
 
-const getDaysForGrid = (currentMonthDays, prevMonthDays) => {
-    let { dayIndex, days } = {...currentMonthDays}
-    const prevMonthDaysCopy = {...prevMonthDays}
+/**
+ * Description: Returns array with formatted days structure in current month, including days from prev month and days from next month
+ * @param currentMonthDays
+ * @param prevMonthDays
+ * @returns {array}
+ */
+const getDaysForGrid = (currentMonthDays, prevMonthDays, nextMonthDays) => {
+  let { firstDayIndex, lastDayIndex, days } = { ...currentMonthDays };
+  const prevMonthDaysCopy = { ...prevMonthDays };
+  const nextMonthDaysCopy = { ...nextMonthDays };
+  let nextMonthFirstDays =
+    lastDayIndex === 7 ? [] : nextMonthDaysCopy.days.slice(0, lastDayIndex);
 
-  const dayIndexForPrevDays = getDayIndexForPrevDays(dayIndex);
+  const prevMonthLastDays =
+      firstDayIndex === 0
+      ? []
+      : prevMonthDaysCopy.days.slice(-firstDayIndex);
+  const prevDays = disableDaysFromDiffMonth(prevMonthLastDays);
+  const nextDays = disableDaysFromDiffMonth(nextMonthFirstDays);
 
-  if (dayIndexForPrevDays === 0) {
-    return days;
-  } else {
-    const prevMonthLastDays = prevMonthDaysCopy.days.slice(-dayIndexForPrevDays);
-    const prevMonthLastDaysFormatted = prevMonthLastDays.map((day) => {
-          return { ...day, isFromPrevMonth: true }; //adding isFromPrevMonth property to handle styles
-      })
-
-    return prevMonthLastDaysFormatted.concat(days);
-  }
+  return [...prevDays, ...days, ...nextDays];
 };
 
 export default { getDaysForGrid };
