@@ -37,6 +37,8 @@ function Calendar({ date }) {
     getDaysInMonth(year, nextMonthNumber)
   );
 
+  const [activeDay, setActiveDay] = useState(date.getDate() - 1);
+
   const monthSetter = (value) => {
     setMonth(value);
   };
@@ -82,6 +84,8 @@ function Calendar({ date }) {
     nextMonthNumber
   );
 
+  const presentMonth = setMonthName(date)
+
   return (
     <div className="calendar">
       <CalendarNavigation
@@ -96,6 +100,8 @@ function Calendar({ date }) {
         prevMonthName={prevMonthName}
         nextMonthName={nextMonthName}
         currentMonthName={currentMonthName}
+        activeDay={activeDay}
+        presentMonth={presentMonth}
       />
     </div>
   );

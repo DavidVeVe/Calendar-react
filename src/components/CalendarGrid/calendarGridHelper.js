@@ -17,6 +17,8 @@ const disableDaysFromDiffMonth = (days) => {
  * @param prevMonthName - {string}
  * @param nextMonthName - {string}
  * @param currentMonthName - {string}
+ * @param activeDay - {number}
+ * @param presentMonth - {number}
  * @returns {array}
  */
 const getDaysForGrid = (
@@ -25,9 +27,19 @@ const getDaysForGrid = (
   nextMonthDays,
   prevMonthName,
   nextMonthName,
-  currentMonthName
+  currentMonthName,
+  activeDay,
+  presentMonth
 ) => {
-  let { firstDayIndex, lastDayIndex, days } = { ...currentMonthDays };
+  let { firstDayIndex, lastDayIndex, days, monthName } = {
+    ...currentMonthDays,
+  };
+
+  const daysWithActiveDay = days.map((day, index) => {
+    const isActive = index === activeDay && monthName === presentMonth && true;
+    return { ...day, isActive };
+  })
+
   const prevMonthDaysCopy = { ...prevMonthDays };
   const nextMonthDaysCopy = { ...nextMonthDays };
   let nextMonthFirstDays =
@@ -36,7 +48,7 @@ const getDaysForGrid = (
   const prevMonthLastDays =
     firstDayIndex === 0 ? [] : prevMonthDaysCopy.days.slice(-firstDayIndex);
 
-  days[0].monthName = currentMonthName;
+  daysWithActiveDay[0].monthName = currentMonthName;
 
   if (firstDayIndex !== 0) {
     prevMonthLastDays.at(-1).monthName = prevMonthName;
@@ -49,7 +61,7 @@ const getDaysForGrid = (
   const prevDays = disableDaysFromDiffMonth(prevMonthLastDays);
   const nextDays = disableDaysFromDiffMonth(nextMonthFirstDays);
 
-  return [...prevDays, ...days, ...nextDays];
+  return [...prevDays, ...daysWithActiveDay, ...nextDays];
 };
 
 export default { getDaysForGrid };
