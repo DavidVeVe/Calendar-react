@@ -3,16 +3,19 @@
   width: 165px;
   height: 171px;
   border-radius: 5px;
-  margin: 3px;
-  padding: 4px;
+  margin: 1.5px 2px;
+  padding: 5px;
 
   &__number {
     color: #2D224C;
+    font-weight: bold;
+    line-height: 16.08px;
   }
 
   &--is-from-prev-month {
     .calendar-day__number--is-from-prev-month {
-        color: red;
+        font-weight: bold;
+        color: #9E9E9E;
     }
   }
 }
