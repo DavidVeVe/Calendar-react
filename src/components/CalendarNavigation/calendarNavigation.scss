@@ -1,11 +1,20 @@
 .calendar {
   &__navigation {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
     padding: 30px;
 
     &__title {
       font-size: 36px;
       line-height: 35.82px;
       font-weight: 600;
+    }
+
+    &__buttons {
+      &__today {
+        margin: 0 23px;
+      }
     }
   }
 }
