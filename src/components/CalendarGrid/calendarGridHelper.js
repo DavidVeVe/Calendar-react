@@ -20,7 +20,8 @@ const getDaysForGrid = (
   prevMonthDays,
   nextMonthDays,
   prevMonthName,
-  nextMonthName
+  nextMonthName,
+  currentMonthName
 ) => {
   let { firstDayIndex, lastDayIndex, days } = { ...currentMonthDays };
   const prevMonthDaysCopy = { ...prevMonthDays };
@@ -28,12 +29,13 @@ const getDaysForGrid = (
   let nextMonthFirstDays =
     lastDayIndex === 7 ? [] : nextMonthDaysCopy.days.slice(0, lastDayIndex);
 
-  nextMonthFirstDays[0].nextMonthName = nextMonthName
+  days[0].monthName = currentMonthName;
+  nextMonthFirstDays[0].monthName = nextMonthName;
 
   const prevMonthLastDays =
     firstDayIndex === 0 ? [] : prevMonthDaysCopy.days.slice(-firstDayIndex);
 
-  prevMonthLastDays.at(-1).prevMonthName = prevMonthName
+  prevMonthLastDays.at(-1).monthName = prevMonthName;
 
   const prevDays = disableDaysFromDiffMonth(prevMonthLastDays);
   const nextDays = disableDaysFromDiffMonth(nextMonthFirstDays);

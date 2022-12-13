@@ -68,6 +68,7 @@ function Calendar({ date }) {
 
   const prevMonthName = setMonthName(createDate(year, prevMonthNumber, 1));
   const nextMonthName = setMonthName(createDate(year, nextMonthNumber, 1));
+  const currentMonthName = setMonthName(createDate(year, month, 1));
 
   const monthFormatted = getFormattedMonthConfig(currentMonthDays, year, month);
   const prevMonthFormatted = getFormattedMonthConfig(
@@ -94,6 +95,7 @@ function Calendar({ date }) {
         nextMonthDays={nextMonthFormatted}
         prevMonthName={prevMonthName}
         nextMonthName={nextMonthName}
+        currentMonthName={currentMonthName}
       />
     </div>
   );

@@ -47,15 +47,13 @@ const getFormattedMonthConfig = (daysInCurrentMonth, y, m) => {
       const dayName =
         DAYS_OF_THE_WEEK[
           new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(
-              createDate(y, m, day + 1)
+            createDate(y, m, day + 1)
           )
         ];
       return { dayNumber: day + 1, dayName };
     }),
     firstDayIndex: getFirstDayInMonthIndex(createDate(y, m, 1).getDay()),
     lastDayIndex: DAYS_IN_A_WEEK - createDate(y, m + 1, 0).getDay(),
-    prevMonth: '',
-    nextMonth: '',
   };
 };
 

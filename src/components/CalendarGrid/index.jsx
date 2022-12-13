@@ -18,13 +18,15 @@ function CalendarGrid({
   nextMonthDays,
   prevMonthName,
   nextMonthName,
+  currentMonthName,
 }) {
   const daysForGrid = getDaysForGrid(
     currentMonthDays,
     prevMonthDays,
     nextMonthDays,
     prevMonthName,
-    nextMonthName
+    nextMonthName,
+    currentMonthName
   ).map((day) => {
     const { dayNumber, dayName, isDayDisabled, monthName } = day;
     return (
