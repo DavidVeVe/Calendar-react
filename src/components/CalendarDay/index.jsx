@@ -1,4 +1,5 @@
 import "./calendarDay.scss";
+import { MONTHS_SHORT } from "../../constants";
 import { getClassNames } from "./helper";
 
 /**
@@ -13,12 +14,12 @@ import { getClassNames } from "./helper";
 function CalendarDay({ dayNumber, dayName, isDayDisabled, monthName }) {
   const { elementClassName, blockClassName } = getClassNames(isDayDisabled);
 
+  const dayTitle = monthName ? `${dayNumber} ${MONTHS_SHORT[monthName]}` : dayNumber
+
   return (
     <div className={elementClassName}>
       <span className={blockClassName}>
-        {/*<span>{dayName}</span>*/}
-        <span>{dayNumber}</span>
-        <span>{monthName}</span>
+        <span>{dayTitle}</span>
       </span>
     </div>
   );

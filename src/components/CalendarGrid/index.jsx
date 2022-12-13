@@ -10,6 +10,7 @@ const { getDaysForGrid } = helper;
  * @param nextMonthDays {object}
  * @param prevMonthName {string}
  * @param nextMonthName {string}
+ * @param currentMonthName {string}
  * @returns {JSX.Element}
  */
 function CalendarGrid({
@@ -29,6 +30,7 @@ function CalendarGrid({
     currentMonthName
   ).map((day) => {
     const { dayNumber, dayName, isDayDisabled, monthName } = day;
+
     return (
       <CalendarDay
         key={dayName + Math.random()}

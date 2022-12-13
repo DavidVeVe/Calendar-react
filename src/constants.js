@@ -1,8 +1,3 @@
-export const CALENDAR_REDUCER_CONSTANTS = {
-  GET_NEXT_MONTH: "GET_NEXT_MONTH",
-  GET_PREVIOUS_MONTH: "GET_PREVIOUS_MONTH",
-};
-
 export const DAYS_OF_THE_WEEK = {
   Sunday: "SUN",
   Monday: "MON",
@@ -28,4 +23,19 @@ export const MONTHS = [
   "December",
 ];
 
-export const DAYS_IN_A_WEEK = 7
+export const MONTHS_SHORT = {
+  January: "Jan",
+  February: "Feb",
+  March: "Mar",
+  April: "Apr",
+  May: "May",
+  June: "Jun",
+  July: "Jul",
+  August: "Aug",
+  September: "Sep",
+  October: "Oct",
+  November: "Nov",
+  December: "Dec",
+};
+
+export const DAYS_IN_A_WEEK = 7;
