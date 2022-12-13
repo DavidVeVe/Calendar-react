@@ -71,20 +71,21 @@ function Calendar({ date }) {
     nextMonth
   );
 
+  const calendarTitle = `${MONTHS[month]} ${year}`
+
   return (
-    <>
-      <span className="">{MONTHS[month]}</span>
-      <span>{year}</span>
+    <div className="calendar">
       <CalendarNavigation
         getNextMonth={() => setNewMonth({ ...setNewMonthArgs }, true)}
         getPrevMonth={() => setNewMonth({ ...setNewMonthArgs }, false)}
+        calendarTitle={calendarTitle}
       />
       <CalendarGrid
         currentMonthDays={monthFormatted}
         prevMonthDays={prevMonthFormatted}
         nextMonthDays={nextMonthFormatted}
       />
-    </>
+    </div>
   );
 }
 
