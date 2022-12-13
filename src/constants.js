@@ -13,16 +13,6 @@ export const DAYS_OF_THE_WEEK = {
   Saturday: "SAT",
 };
 
-export const SHORT_DAYS_OF_THE_WEEK = {
-  MON: 0,
-  TUE: 1,
-  WEN: 2,
-  THU: 3,
-  FRI: 4,
-  SAT: 5,
-  SUN: 6,
-};
-
 export const MONTHS = [
   "January",
   "February",

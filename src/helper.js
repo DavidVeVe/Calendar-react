@@ -1,8 +1,8 @@
 import { DAYS_OF_THE_WEEK, DAYS_IN_A_WEEK } from "./constants";
 
 /**
- * Description updates dayIndex to slice days array with the correct dayIndex
- * @param dayIndex
+ * Description: updates dayIndex to slice days array with the correct dayIndex
+ * @param dayIndex - {number}
  * @returns {number}
  */
 const getFirstDayInMonthIndex = (dayIndex) => {
@@ -18,16 +18,34 @@ const createDate = (y, m, d) => new Date(y, m, d);
 
 const setDate = (y, m, d) => createDate(y, m, d);
 
+/**
+ * Description: Returns month name passed in date as string
+ * @param date
+ * @returns {string}
+ */
 const setMonthName = (date) =>
   date.toLocaleString("default", { month: "long" });
 
 const setPrevMonthName = (y, m, d) =>
   createDate(y, m, d).toLocaleString("default", { month: "long" });
 
+/**
+ * Description: Returns quantity of days in the requested month
+ * @param y
+ * @param m
+ * @returns {number}
+ */
 const getDaysInMonth = (y, m) => {
   return new Date(y, m + 1, 0).getDate();
 };
 
+/**
+ * Description: Returns an object with the formatted days structure of the requested month, current month firstDayIndex and lastDayIndex
+ * @param daysInCurrentMonth - {number}
+ * @param y - {number} year
+ * @param m - {number} month
+ * @returns {{lastDayIndex: number, days: {dayName: *, dayNumber}[], firstDayIndex: number}}
+ */
 const getFormattedMonthConfig = (daysInCurrentMonth, y, m) => {
   return {
     days: [...Array(daysInCurrentMonth).keys()].map((day) => {
@@ -44,6 +62,12 @@ const getFormattedMonthConfig = (daysInCurrentMonth, y, m) => {
   };
 };
 
+/**
+ * Description: Returns an object with the conditions met by isNextMonth boolean
+ * @param month - {number}
+ * @param isNextMonth - {boolean}
+ * @returns {{newYear: {(*), (*)}, monthToGetNextMonthDays: *, condition: boolean, monthToGetPrevMonthDays: (*|number), newMonth: {(*), (*)}, newMonthReset: number, monthToGetCurrentDays: (*|number)}}
+ */
 const getNewMonthValues = (month, isNextMonth) => ({
   condition: isNextMonth ? month < 11 : month > 0,
   newMonthReset: isNextMonth ? 0 : 11,
@@ -54,6 +78,17 @@ const getNewMonthValues = (month, isNextMonth) => ({
   monthToGetNextMonthDays: isNextMonth ? month + 2 : month,
 });
 
+/**
+ * Description: Updates previous, current and next month information when next or previous month event is triggered.
+ * @param month - {number}
+ * @param year - {number}
+ * @param monthSetter - {function}
+ * @param yearSetter - {function}
+ * @param currentMonthDaysSetter - {function}
+ * @param prevMonthDaysSetter - {function}
+ * @param nextMonthDaysSetter - {function}
+ * @param isNextMonth - {boolean}
+ */
 const setNewMonth = (
   {
     month,
