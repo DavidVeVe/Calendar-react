@@ -6,10 +6,11 @@ import { getClassNames } from "./helper";
  * @param dayNumber - {number}
  * @param dayName - {string}
  * @param isDayDisabled - {boolean}
+ * @param monthName - {string}
  * @returns {JSX.Element}
  * @constructor
  */
-function CalendarDay({ dayNumber, dayName, isDayDisabled }) {
+function CalendarDay({ dayNumber, dayName, isDayDisabled, monthName }) {
   const { elementClassName, blockClassName } = getClassNames(isDayDisabled);
 
   return (
@@ -17,6 +18,7 @@ function CalendarDay({ dayNumber, dayName, isDayDisabled }) {
       <span className={blockClassName}>
         {/*<span>{dayName}</span>*/}
         <span>{dayNumber}</span>
+        <span>{monthName}</span>
       </span>
     </div>
   );

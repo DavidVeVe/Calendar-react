@@ -15,17 +15,26 @@ const disableDaysFromDiffMonth = (days) => {
  * @param prevMonthDays - {object}
  * @returns {array}
  */
-const getDaysForGrid = (currentMonthDays, prevMonthDays, nextMonthDays) => {
+const getDaysForGrid = (
+  currentMonthDays,
+  prevMonthDays,
+  nextMonthDays,
+  prevMonthName,
+  nextMonthName
+) => {
   let { firstDayIndex, lastDayIndex, days } = { ...currentMonthDays };
   const prevMonthDaysCopy = { ...prevMonthDays };
   const nextMonthDaysCopy = { ...nextMonthDays };
   let nextMonthFirstDays =
     lastDayIndex === 7 ? [] : nextMonthDaysCopy.days.slice(0, lastDayIndex);
 
+  nextMonthFirstDays[0].nextMonthName = nextMonthName
+
   const prevMonthLastDays =
-      firstDayIndex === 0
-      ? []
-      : prevMonthDaysCopy.days.slice(-firstDayIndex);
+    firstDayIndex === 0 ? [] : prevMonthDaysCopy.days.slice(-firstDayIndex);
+
+  prevMonthLastDays.at(-1).prevMonthName = prevMonthName
+
   const prevDays = disableDaysFromDiffMonth(prevMonthLastDays);
   const nextDays = disableDaysFromDiffMonth(nextMonthFirstDays);
 

@@ -8,21 +8,32 @@ const { getDaysForGrid } = helper;
  * @param currentMonthDays {object}
  * @param prevMonthDays {object}
  * @param nextMonthDays {object}
+ * @param prevMonthName {string}
+ * @param nextMonthName {string}
  * @returns {JSX.Element}
  */
-function CalendarGrid({ currentMonthDays, prevMonthDays, nextMonthDays }) {
+function CalendarGrid({
+  currentMonthDays,
+  prevMonthDays,
+  nextMonthDays,
+  prevMonthName,
+  nextMonthName,
+}) {
   const daysForGrid = getDaysForGrid(
     currentMonthDays,
     prevMonthDays,
-    nextMonthDays
+    nextMonthDays,
+    prevMonthName,
+    nextMonthName
   ).map((day) => {
-    const { dayNumber, dayName, isDayDisabled } = day;
+    const { dayNumber, dayName, isDayDisabled, monthName } = day;
     return (
       <CalendarDay
         key={dayName + Math.random()}
         dayNumber={dayNumber}
         dayName={dayName}
         isDayDisabled={isDayDisabled}
+        monthName={monthName}
       />
     );
   });

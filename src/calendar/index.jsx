@@ -4,7 +4,13 @@ import { MONTHS } from "../constants";
 import { useState } from "react";
 import helper from "../helper";
 
-const { setNewMonth, getFormattedMonthConfig, getDaysInMonth } = helper;
+const {
+  setNewMonth,
+  getFormattedMonthConfig,
+  getDaysInMonth,
+  setMonthName,
+  createDate,
+} = helper;
 
 /**
  * Description: Calendar component
@@ -15,19 +21,20 @@ const { setNewMonth, getFormattedMonthConfig, getDaysInMonth } = helper;
 function Calendar({ date }) {
   const [month, setMonth] = useState(date.getMonth());
 
-  const prevMonth = month - 1;
-  const nextMonth = month + 1;
+  const prevMonthNumber = month - 1;
+  const nextMonthNumber = month + 1;
 
   const [year, setYear] = useState(date.getFullYear());
+
   const [currentMonthDays, setCurrentMonthDays] = useState(
     getDaysInMonth(year, month)
   );
   const [prevMonthDays, setPrevMonthDays] = useState(
-    getDaysInMonth(year, prevMonth)
+    getDaysInMonth(year, prevMonthNumber)
   );
 
   const [nextMonthDays, setNextMonthDays] = useState(
-    getDaysInMonth(year, nextMonth)
+    getDaysInMonth(year, nextMonthNumber)
   );
 
   const monthSetter = (value) => {
@@ -59,31 +66,34 @@ function Calendar({ date }) {
     nextMonthDaysSetter,
   };
 
+  const prevMonthName = setMonthName(createDate(year, prevMonthNumber, 1));
+  const nextMonthName = setMonthName(createDate(year, nextMonthNumber, 1));
+
   const monthFormatted = getFormattedMonthConfig(currentMonthDays, year, month);
   const prevMonthFormatted = getFormattedMonthConfig(
     prevMonthDays,
     year,
-    prevMonth
+    prevMonthNumber
   );
   const nextMonthFormatted = getFormattedMonthConfig(
     nextMonthDays,
     year,
-    nextMonth
+    nextMonthNumber
   );
-
-  const calendarTitle = `${MONTHS[month]} ${year}`
 
   return (
     <div className="calendar">
       <CalendarNavigation
         getNextMonth={() => setNewMonth({ ...setNewMonthArgs }, true)}
         getPrevMonth={() => setNewMonth({ ...setNewMonthArgs }, false)}
-        calendarTitle={calendarTitle}
+        calendarTitle={`${MONTHS[month]} ${year}`}
       />
       <CalendarGrid
         currentMonthDays={monthFormatted}
         prevMonthDays={prevMonthFormatted}
         nextMonthDays={nextMonthFormatted}
+        prevMonthName={prevMonthName}
+        nextMonthName={nextMonthName}
       />
     </div>
   );

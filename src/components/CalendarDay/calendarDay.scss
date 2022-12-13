@@ -5,6 +5,7 @@
   border-radius: 5px;
   margin: 1.5px 2px;
   padding: 5px;
+  text-align: center;
 
   &__number {
     color: #2D224C;
@@ -15,7 +16,7 @@
   &--is-from-prev-month {
     .calendar-day__number--is-from-prev-month {
         font-weight: bold;
-        color: #9E9E9E;
+        color: #C4C4C4;
     }
   }
 }
