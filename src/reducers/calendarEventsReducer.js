@@ -5,6 +5,6 @@ const { TOGGLE_MODAL } = CALENDAR_EVENTS;
 export const calendarEventsReducer = (state, action) => {
   switch (action.type) {
     case TOGGLE_MODAL:
-      return { ...state, showModal: !state.showModal };
+      return { ...state, showModal: action.showModal };
   }
 };

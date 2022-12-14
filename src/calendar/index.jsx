@@ -21,7 +21,7 @@ const {
  * @constructor
  */
 function Calendar({ date }) {
-  const { showModal } = useCalendarEvents();
+  const { showModal, toggleModal } = useCalendarEvents();
 
   const presentMonthNumber = date.getMonth();
   const presentYearNumber = date.getFullYear();
@@ -103,13 +103,11 @@ function Calendar({ date }) {
 
   return (
     <div className="calendar">
-      <EventModal showModal={showModal} />
+      <EventModal showModal={showModal} toggleModal={toggleModal} />
       <CalendarNavigation
         getNextMonth={() => setNewMonth({ ...setNewMonthArgs }, true)}
         getPrevMonth={() => setNewMonth({ ...setNewMonthArgs }, false)}
-        getToday={() => {
-          getToday();
-        }}
+        getToday={getToday}
         calendarTitle={`${MONTHS[month]} ${year}`}
       />
       <CalendarGrid
