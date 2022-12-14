@@ -11,6 +11,10 @@
   justify-content: center;
   align-items: flex-start;
 
+  &--is-active {
+    outline: 2px solid #d4145a;
+  }
+
   &__number {
     color: #2d224c;
     font-weight: bold;
