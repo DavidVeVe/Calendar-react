@@ -84,7 +84,7 @@ function Calendar({ date }) {
     nextMonthNumber
   );
 
-  const presentMonth = setMonthName(date)
+  const presentMonth = setMonthName(date);
 
   return (
     <div className="calendar">

@@ -8,13 +8,25 @@ import { getClassNames } from "./helper";
  * @param dayName - {string}
  * @param isDayDisabled - {boolean}
  * @param monthName - {string}
+ * @param isActive - {boolean}
  * @returns {JSX.Element}
  * @constructor
  */
-function CalendarDay({ dayNumber, dayName, isDayDisabled, monthName }) {
-  const { elementClassName, blockClassName } = getClassNames(isDayDisabled);
+function CalendarDay({
+  dayNumber,
+  dayName,
+  isDayDisabled,
+  monthName,
+  isActive,
+}) {
+  const { elementClassName, blockClassName } = getClassNames(
+    isDayDisabled,
+    isActive
+  );
 
-  const dayTitle = monthName ? `${dayNumber} ${MONTHS_SHORT[monthName]}` : dayNumber
+  const dayTitle = monthName
+    ? `${dayNumber} ${MONTHS_SHORT[monthName]}`
+    : dayNumber;
 
   return (
     <div className={elementClassName}>

@@ -1,17 +1,29 @@
 /**
  * Description: Get classnames for calendar day
- * @param condition
+ * @param prevMonthCondition {boolean}
+ * @param isActive {boolean}
  * @returns {{elementClassName: (string|string), blockClassName: (string|string)}}
  */
-export const getClassNames = (condition) => {
-    const initialElementClassName = "calendar-day";
-    const initialBlockClassName = "calendar-day__number";
-    return {
-        elementClassName: condition
-            ? `${initialElementClassName}--is-from-prev-month`
-            : initialElementClassName,
-        blockClassName: condition
-            ? `${initialBlockClassName}--is-from-prev-month`
-            : initialBlockClassName,
-    };
+export const getClassNames = (prevMonthCondition, isActive) => {
+  const initialElementClassName = `calendar-day`;
+  const initialBlockClassName = `calendar-day__number`;
+
+  const elementClassWithPrevMonthCondition = prevMonthCondition
+    ? `${initialElementClassName} ${initialElementClassName}--is-from-prev-month`
+    : initialElementClassName;
+  const blockClassWithPrevMonthCondition = prevMonthCondition
+    ? ` ${initialBlockClassName} ${initialBlockClassName}--is-from-prev-month`
+    : initialBlockClassName;
+
+  const elementClassNameActiveDay = isActive
+    ? ` ${initialElementClassName}--is-active`
+    : "";
+  const blockClassNameActiveDay = isActive
+    ? ` ${initialBlockClassName}--is-active`
+    : "";
+
+  return {
+    elementClassName: `${elementClassWithPrevMonthCondition}${elementClassNameActiveDay}`,
+    blockClassName: `${blockClassWithPrevMonthCondition}${blockClassNameActiveDay}`,
+  };
 };

@@ -35,7 +35,7 @@ function CalendarGrid({
     activeDay,
     presentMonth
   ).map((day) => {
-    const { dayNumber, dayName, isDayDisabled, monthName } = day;
+    const { dayNumber, dayName, isDayDisabled, monthName, isActive } = day;
 
     return (
       <CalendarDay
@@ -44,6 +44,7 @@ function CalendarGrid({
         dayName={dayName}
         isDayDisabled={isDayDisabled}
         monthName={monthName}
+        isActive={isActive}
       />
     );
   });

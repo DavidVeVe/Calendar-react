@@ -38,7 +38,7 @@ const getDaysForGrid = (
   const daysWithActiveDay = days.map((day, index) => {
     const isActive = index === activeDay && monthName === presentMonth && true;
     return { ...day, isActive };
-  })
+  });
 
   const prevMonthDaysCopy = { ...prevMonthDays };
   const nextMonthDaysCopy = { ...nextMonthDays };
