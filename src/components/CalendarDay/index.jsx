@@ -1,6 +1,6 @@
-import "./calendarDay.scss";
 import { MONTHS_SHORT } from "../../constants";
 import { getClassNames } from "./helper";
+import "./calendarDay.scss";
 
 /**
  * Description: CalendarDay Component

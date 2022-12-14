@@ -1,7 +1,8 @@
+import { useState } from "react";
 import CalendarNavigation from "../components/CalendarNavigation";
 import CalendarGrid from "../components/CalendarGrid";
+import EventModal from "../components/EventModal";
 import { MONTHS } from "../constants";
-import { useState } from "react";
 import helper from "../helper";
 
 const {
@@ -99,6 +100,7 @@ function Calendar({ date }) {
 
   return (
     <div className="calendar">
+      <EventModal />
       <CalendarNavigation
         getNextMonth={() => setNewMonth({ ...setNewMonthArgs }, true)}
         getPrevMonth={() => setNewMonth({ ...setNewMonthArgs }, false)}
