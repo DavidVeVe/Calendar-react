@@ -39,3 +39,7 @@ export const MONTHS_SHORT = {
 };
 
 export const DAYS_IN_A_WEEK = 7;
+
+export const CALENDAR_EVENTS = {
+  TOGGLE_MODAL: "TOGGLE_MODAL",
+}

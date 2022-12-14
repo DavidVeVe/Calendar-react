@@ -4,6 +4,7 @@ import CalendarGrid from "../components/CalendarGrid";
 import EventModal from "../components/EventModal";
 import { MONTHS } from "../constants";
 import helper from "../helper";
+import { useCalendarEvents } from "../hooks/useCalendarEvents";
 
 const {
   setNewMonth,
@@ -20,10 +21,12 @@ const {
  * @constructor
  */
 function Calendar({ date }) {
-  const presentMonthNumber = date.getMonth()
-  const presentYearNumber = date.getFullYear()
-  const presentDayNumber = date.getDate()
-  const presentActiveDayNumber = presentDayNumber - 1
+  const { showModal } = useCalendarEvents();
+
+  const presentMonthNumber = date.getMonth();
+  const presentYearNumber = date.getFullYear();
+  const presentDayNumber = date.getDate();
+  const presentActiveDayNumber = presentDayNumber - 1;
 
   const [month, setMonth] = useState(presentMonthNumber);
 
@@ -46,10 +49,10 @@ function Calendar({ date }) {
   const [activeDay, setActiveDay] = useState(presentActiveDayNumber);
 
   const getToday = () => {
-    setMonth(presentMonthNumber)
-    setYear(presentYearNumber)
-    setActiveDay(presentActiveDayNumber)
-  }
+    setMonth(presentMonthNumber);
+    setYear(presentYearNumber);
+    setActiveDay(presentActiveDayNumber);
+  };
 
   const monthSetter = (value) => {
     setMonth(value);
@@ -100,11 +103,13 @@ function Calendar({ date }) {
 
   return (
     <div className="calendar">
-      <EventModal />
+      <EventModal showModal={showModal} />
       <CalendarNavigation
         getNextMonth={() => setNewMonth({ ...setNewMonthArgs }, true)}
         getPrevMonth={() => setNewMonth({ ...setNewMonthArgs }, false)}
-        getToday = {() => {getToday()}}
+        getToday={() => {
+          getToday();
+        }}
         calendarTitle={`${MONTHS[month]} ${year}`}
       />
       <CalendarGrid
