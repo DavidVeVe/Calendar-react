@@ -1,0 +1,22 @@
+.calendar__modal {
+
+    &__overlay {
+      position: fixed;
+      background-color: rgba(0, 0, 0, 0.5);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &--body {
+      position: fixed;
+      top: 25%;
+      bottom: 25%;
+      left: 25%;
+      right: 25%;
+      border-radius: 19px;
+      z-index: 50;
+      background-color: #ffffff;
+    }
+}
