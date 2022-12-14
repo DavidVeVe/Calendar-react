@@ -19,12 +19,17 @@ const {
  * @constructor
  */
 function Calendar({ date }) {
-  const [month, setMonth] = useState(date.getMonth());
+  const presentMonthNumber = date.getMonth()
+  const presentYearNumber = date.getFullYear()
+  const presentDayNumber = date.getDate()
+  const presentActiveDayNumber = presentDayNumber - 1
+
+  const [month, setMonth] = useState(presentMonthNumber);
 
   const prevMonthNumber = month - 1;
   const nextMonthNumber = month + 1;
 
-  const [year, setYear] = useState(date.getFullYear());
+  const [year, setYear] = useState(presentYearNumber);
 
   const [currentMonthDays, setCurrentMonthDays] = useState(
     getDaysInMonth(year, month)
@@ -37,7 +42,13 @@ function Calendar({ date }) {
     getDaysInMonth(year, nextMonthNumber)
   );
 
-  const [activeDay, setActiveDay] = useState(date.getDate() - 1);
+  const [activeDay, setActiveDay] = useState(presentActiveDayNumber);
+
+  const getToday = () => {
+    setMonth(presentMonthNumber)
+    setYear(presentYearNumber)
+    setActiveDay(presentActiveDayNumber)
+  }
 
   const monthSetter = (value) => {
     setMonth(value);
@@ -91,6 +102,7 @@ function Calendar({ date }) {
       <CalendarNavigation
         getNextMonth={() => setNewMonth({ ...setNewMonthArgs }, true)}
         getPrevMonth={() => setNewMonth({ ...setNewMonthArgs }, false)}
+        getToday = {() => {getToday()}}
         calendarTitle={`${MONTHS[month]} ${year}`}
       />
       <CalendarGrid
