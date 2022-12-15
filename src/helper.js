@@ -50,7 +50,7 @@ const getFormattedMonthConfig = (daysInCurrentMonth, y, m) => {
             createDate(y, m, day + 1)
           )
         ];
-      return { dayNumber: day + 1, dayName };
+      return { dayNumber: day + 1, dayName, fullDate: createDate(y, m, day + 1), events: [] };
     }),
     firstDayIndex: getFirstDayInMonthIndex(createDate(y, m, 1).getDay()),
     lastDayIndex: DAYS_IN_A_WEEK - createDate(y, m + 1, 0).getDay(),

@@ -3,8 +3,8 @@ import CalendarNavigation from "../components/CalendarNavigation";
 import CalendarGrid from "../components/CalendarGrid";
 import EventModal from "../components/EventModal";
 import { MONTHS } from "../constants";
-import helper from "../helper";
 import { useCalendarEvents } from "../hooks/useCalendarEvents";
+import helper from "../helper";
 
 const {
   setNewMonth,
@@ -21,12 +21,19 @@ const {
  * @constructor
  */
 function Calendar({ date }) {
-  const { showModal, toggleModal } = useCalendarEvents();
+  const { showModal, toggleModal, calendarEvents } = useCalendarEvents();
 
   const presentMonthNumber = date.getMonth();
   const presentYearNumber = date.getFullYear();
   const presentDayNumber = date.getDate();
   const presentActiveDayNumber = presentDayNumber - 1;
+
+  const presentDateObj = {
+    presentMonthNumber,
+    presentYearNumber,
+    presentDayNumber: presentActiveDayNumber,
+  };
+
 
   const [month, setMonth] = useState(presentMonthNumber);
 
@@ -99,8 +106,6 @@ function Calendar({ date }) {
     nextMonthNumber
   );
 
-  const presentMonth = setMonthName(date);
-
   return (
     <div className="calendar">
       <EventModal showModal={showModal} toggleModal={toggleModal} />
@@ -118,7 +123,8 @@ function Calendar({ date }) {
         nextMonthName={nextMonthName}
         currentMonthName={currentMonthName}
         activeDay={activeDay}
-        presentMonth={presentMonth}
+        presentDateObj={presentDateObj}
+        calendarEvents={calendarEvents}
       />
     </div>
   );

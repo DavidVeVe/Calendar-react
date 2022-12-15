@@ -1,12 +1,14 @@
 import { useReducer } from "react";
 import { calendarEventsReducer } from "../reducers/calendarEventsReducer";
 import { CALENDAR_EVENTS } from "../constants";
+import { calendarEventsMock } from "../mocks/calendarEventsMock";
 
 const { TOGGLE_MODAL } = CALENDAR_EVENTS;
 
 export const useCalendarEvents = () => {
-  const [{ showModal }, dispatch] = useReducer(calendarEventsReducer, {
+  const [{ showModal, calendarEvents }, dispatch] = useReducer(calendarEventsReducer, {
     showModal: false,
+    calendarEvents: calendarEventsMock,
   });
 
   const toggleModal = () => {
@@ -16,5 +18,6 @@ export const useCalendarEvents = () => {
   return {
     showModal,
     toggleModal,
+    calendarEvents
   };
 };

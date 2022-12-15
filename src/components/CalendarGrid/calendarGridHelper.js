@@ -1,3 +1,8 @@
+import { MONTHS_NUMBERS } from "../../constants";
+import helper from "../../helper";
+
+const { setMonthName, createDate } = helper;
+
 /**
  * Description: Adds isDayDisabled to day object structure
  * @param days - {array}
@@ -9,6 +14,22 @@ const disableDaysFromDiffMonth = (days) => {
   });
 };
 
+const parseEventDate = (dateString) => {
+  const splitDateString = dateString.replace(/\s/g, "-").split("-");
+  const [zero, first, second, third] = splitDateString;
+  const indexOne = first
+    .replace("st", "")
+    .replace("nd", "")
+    .replace("rd", "")
+    .replace("th", "");
+
+  const parsedSplitDateString = [zero, indexOne, second, third];
+  const testDayNumber = +parsedSplitDateString[1];
+  const testMonthNumber = MONTHS_NUMBERS[parsedSplitDateString[2]];
+  const testYearNumber = parsedSplitDateString[3];
+  return new Date(+testYearNumber, testMonthNumber, testDayNumber);
+};
+
 /**
  * Description: Returns array with formatted days structure in current month, including days from prev month and days from next month
  * @param currentMonthDays - {object}
@@ -18,7 +39,8 @@ const disableDaysFromDiffMonth = (days) => {
  * @param nextMonthName - {string}
  * @param currentMonthName - {string}
  * @param activeDay - {number}
- * @param presentMonth - {number}
+ * @param presentDateObj - {object}
+ * @param calendarEvents - {array}
  * @returns {array}
  */
 const getDaysForGrid = (
@@ -29,14 +51,25 @@ const getDaysForGrid = (
   nextMonthName,
   currentMonthName,
   activeDay,
-  presentMonth
+  presentDateObj,
+  calendarEvents
 ) => {
   let { firstDayIndex, lastDayIndex, days, monthName } = {
     ...currentMonthDays,
   };
 
+  const { presentDayNumber, presentMonthNumber, presentYearNumber } =
+    presentDateObj;
+
+  const presentDate = createDate(
+    presentYearNumber,
+    presentMonthNumber,
+    presentDayNumber
+  );
+
   const daysWithActiveDay = days.map((day, index) => {
-    const isActive = index === activeDay && monthName === presentMonth && true;
+    const isActive =
+      index === activeDay && monthName === setMonthName(presentDate) && true;
     return { ...day, isActive };
   });
 
@@ -61,7 +94,22 @@ const getDaysForGrid = (
   const prevDays = disableDaysFromDiffMonth(prevMonthLastDays);
   const nextDays = disableDaysFromDiffMonth(nextMonthFirstDays);
 
-  return [...prevDays, ...daysWithActiveDay, ...nextDays];
+  let daysToRenderWithEvents = [];
+
+  calendarEvents.forEach((event) => {
+    daysToRenderWithEvents = [
+      ...prevDays,
+      ...daysWithActiveDay,
+      ...nextDays,
+    ].map((day) => {
+      if (parseEventDate(event.date).getTime() === day.fullDate.getTime()) {
+        day.events = event.events;
+      }
+      return day;
+    });
+  });
+
+  return daysToRenderWithEvents;
 };
 
 export default { getDaysForGrid };
