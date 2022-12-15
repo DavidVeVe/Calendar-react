@@ -1,5 +1,6 @@
 import { MONTHS_SHORT } from "../../constants";
 import { getClassNames } from "./helper";
+import DayEvent from "../DayEvent";
 import "./calendarDay.scss";
 
 /**
@@ -9,6 +10,7 @@ import "./calendarDay.scss";
  * @param isDayDisabled - {boolean}
  * @param monthName - {string}
  * @param isActive - {boolean}
+ * @param events - {array}
  * @returns {JSX.Element}
  * @constructor
  */
@@ -18,21 +20,30 @@ function CalendarDay({
   isDayDisabled,
   monthName,
   isActive,
+  events,
 }) {
   const { elementClassName, blockClassName } = getClassNames(
     isDayDisabled,
     isActive
   );
 
-  const dayTitle = monthName
+  const dayEvents = events.map((event) => {
+    const { eventName } = event;
+    return <DayEvent key={eventName} eventName={eventName} />;
+  });
+
+  const dayText = monthName
     ? `${dayNumber} ${MONTHS_SHORT[monthName]}`
     : dayNumber;
 
   return (
     <div className={elementClassName}>
-      <span className={blockClassName}>
-        <span>{dayTitle}</span>
-      </span>
+      <div className={blockClassName}>
+        <span>{dayText}</span>
+      </div>
+        <div className="calendar-day__events">
+          {dayEvents}
+        </div>
     </div>
   );
 }

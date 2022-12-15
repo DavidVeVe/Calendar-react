@@ -10,6 +10,7 @@ export const calendarEventsMock = [
         endTime: 9.75,
         duration: "45 minutes",
         recorded: false,
+        isFinished: true,
         material: [
           {
             name: "Video Listening Introduction",
@@ -31,6 +32,7 @@ export const calendarEventsMock = [
         endTime: 10,
         duration: "1 hora",
         recorded: true,
+        isFinished: true,
         material: [
           { name: "Video Listening Introduction", link: "www.google.com" },
           { name: "Video Listening Introduction", link: "www.google.com" },
@@ -44,6 +46,7 @@ export const calendarEventsMock = [
         endTime: 10,
         duration: "1 hora",
         recorded: true,
+        isFinished: true,
         material: [
           { name: "Video Listening Introduction", link: "www.google.com" },
           { name: "Video Listening Introduction", link: "www.google.com" },
@@ -62,6 +65,7 @@ export const calendarEventsMock = [
         endTime: 9.5,
         duration: "30 minutes",
         recorded: true,
+        isFinished: true,
         material: [
           { name: "Video Listening Introduction", link: "www.google.com" },
           { name: "Video Listening Introduction", link: "www.google.com" },
@@ -75,6 +79,7 @@ export const calendarEventsMock = [
         endTime: 9.5,
         duration: "30 minutes",
         recorded: true,
+        isFinished: true,
         material: [
           { name: "Video Listening Introduction", link: "www.google.com" },
           { name: "Video Listening Introduction", link: "www.google.com" },
@@ -93,6 +98,7 @@ export const calendarEventsMock = [
         endTime: 9.5,
         duration: "30 minutes",
         recorded: true,
+        isFinished: true,
         material: [
           { name: "Video Listening Introduction", link: "www.google.com" },
           { name: "Video Listening Introduction", link: "www.google.com" },
@@ -106,6 +112,7 @@ export const calendarEventsMock = [
         endTime: 9.5,
         duration: "30 minutes",
         recorded: true,
+        isFinished: true,
         material: [
           { name: "Video Listening Introduction", link: "www.google.com" },
           { name: "Video Listening Introduction", link: "www.google.com" },

@@ -1,7 +1,7 @@
-import './dayEvent.scss'
+import "./dayEvent.scss";
 
-function DayEvent () {
-    return <p>This is day event component</p>;
+function DayEvent({ eventName }) {
+  return <span>{eventName}</span>;
 }
 
 export default DayEvent;

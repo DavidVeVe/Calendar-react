@@ -8,11 +8,11 @@
   padding: 5px;
   text-align: center;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
 
   &--is-active {
     outline: 2px solid #d4145a;
+    align-items: center;
   }
 
   &__number {
@@ -26,6 +26,10 @@
       background-color: #d4145a;
       border-radius: 50%;
     }
+  }
+
+  &__events {
+    background-color: black;
   }
 
   &--is-from-prev-month {
