@@ -34,12 +34,6 @@ function Calendar({ date }) {
   const presentDayNumber = date.getDate();
   const presentActiveDayNumber = presentDayNumber - 1;
 
-  const presentDateObj = {
-    presentMonthNumber,
-    presentYearNumber,
-    presentDayNumber: presentActiveDayNumber,
-  };
-
   const [month, setMonth] = useState(presentMonthNumber);
 
   const prevMonthNumber = month - 1;
@@ -95,36 +89,32 @@ function Calendar({ date }) {
     nextMonthDaysSetter,
   };
 
-  const prevMonthName = setMonthName(createDate(year, prevMonthNumber, 1));
-  const nextMonthName = setMonthName(createDate(year, nextMonthNumber, 1));
-  const currentMonthName = setMonthName(createDate(year, month, 1));
-
-  const monthFormatted = getFormattedMonthConfig(currentMonthDays, year, month);
-  const prevMonthFormatted = getFormattedMonthConfig(
-    prevMonthDays,
-    year,
-    prevMonthNumber
-  );
-  const nextMonthFormatted = getFormattedMonthConfig(
-    nextMonthDays,
-    year,
-    nextMonthNumber
-  );
-
   const handleSelectEvent = (value) => {
     toggleModal();
     selectEvent(value);
   };
 
   const calendarGridProps = {
-    currentMonthDays: monthFormatted,
-    prevMonthDays: prevMonthFormatted,
-    nextMonthDays: nextMonthFormatted,
-    prevMonthName,
-    nextMonthName,
-    currentMonthName,
+    currentMonthDays: getFormattedMonthConfig(currentMonthDays, year, month),
+    prevMonthDays: getFormattedMonthConfig(
+      prevMonthDays,
+      year,
+      prevMonthNumber
+    ),
+    nextMonthDays: getFormattedMonthConfig(
+      nextMonthDays,
+      year,
+      nextMonthNumber
+    ),
+    prevMonthName: setMonthName(createDate(year, prevMonthNumber, 1)),
+    nextMonthName: setMonthName(createDate(year, nextMonthNumber, 1)),
+    currentMonthName: setMonthName(createDate(year, month, 1)),
     activeDay,
-    presentDateObj,
+    presentDateObj: {
+      presentMonthNumber,
+      presentYearNumber,
+      presentDayNumber: presentActiveDayNumber,
+    },
     calendarEvents,
     handleSelectEvent,
   };
