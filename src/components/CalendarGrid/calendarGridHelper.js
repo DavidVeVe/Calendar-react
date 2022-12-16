@@ -32,28 +32,30 @@ const parseEventDate = (dateString) => {
 
 /**
  * Description: Returns array with formatted days structure in current month, including days from prev month and days from next month
- * @param currentMonthDays - {object}
- * @param prevMonthDays - {object}
- * @param nextMonthDays - {object}
- * @param prevMonthName - {string}
- * @param nextMonthName - {string}
- * @param currentMonthName - {string}
- * @param activeDay - {number}
- * @param presentDateObj - {object}
- * @param calendarEvents - {array}
+ * @param calendarGridProps.currentMonthDays - {object}
+ * @param calendarGridProps.prevMonthDays - {object}
+ * @param calendarGridProps.nextMonthDays - {object}
+ * @param calendarGridProps.prevMonthName - {string}
+ * @param calendarGridProps.nextMonthName - {string}
+ * @param calendarGridProps.currentMonthName - {string}
+ * @param calendarGridProps.activeDay - {number}
+ * @param calendarGridProps.presentDateObj - {object}
+ * @param calendarGridProps.calendarEvents - {array}
  * @returns {array}
  */
-const getDaysForGrid = (
-  currentMonthDays,
-  prevMonthDays,
-  nextMonthDays,
-  prevMonthName,
-  nextMonthName,
-  currentMonthName,
-  activeDay,
-  presentDateObj,
-  calendarEvents
-) => {
+const getDaysForGrid = (calendarGridProps) => {
+  const {
+    currentMonthDays,
+    prevMonthDays,
+    nextMonthDays,
+    prevMonthName,
+    nextMonthName,
+    currentMonthName,
+    activeDay,
+    presentDateObj,
+    calendarEvents,
+  } = calendarGridProps;
+
   let { firstDayIndex, lastDayIndex, days, monthName } = {
     ...currentMonthDays,
   };

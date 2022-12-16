@@ -116,6 +116,19 @@ function Calendar({ date }) {
     selectEvent(value);
   };
 
+  const calendarGridProps = {
+    currentMonthDays: monthFormatted,
+    prevMonthDays: prevMonthFormatted,
+    nextMonthDays: nextMonthFormatted,
+    prevMonthName,
+    nextMonthName,
+    currentMonthName,
+    activeDay,
+    presentDateObj,
+    calendarEvents,
+    handleSelectEvent,
+  };
+
   return (
     <div className="calendar">
       <EventModal
@@ -129,18 +142,7 @@ function Calendar({ date }) {
         getToday={getToday}
         calendarTitle={`${MONTHS[month]} ${year}`}
       />
-      <CalendarGrid
-        currentMonthDays={monthFormatted}
-        prevMonthDays={prevMonthFormatted}
-        nextMonthDays={nextMonthFormatted}
-        prevMonthName={prevMonthName}
-        nextMonthName={nextMonthName}
-        currentMonthName={currentMonthName}
-        activeDay={activeDay}
-        presentDateObj={presentDateObj}
-        calendarEvents={calendarEvents}
-        handleSelectEvent={handleSelectEvent}
-      />
+      <CalendarGrid calendarGridProps={calendarGridProps} />
     </div>
   );
 }

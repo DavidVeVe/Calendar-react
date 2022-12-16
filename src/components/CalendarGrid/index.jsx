@@ -6,40 +6,21 @@ const { getDaysForGrid } = helper;
 
 /**
  * @param currentMonthDays {object}
- * @param prevMonthDays {object}
- * @param nextMonthDays {object}
- * @param prevMonthName {string}
- * @param nextMonthName {string}
- * @param currentMonthName {string}
- * @param activeDay {number}
- * @param presentDateObj {object}
- * @param calendarEvents {array}
- * @param handleSelectEvent {function}
+ * @param calendarGridProps.prevMonthDays {object}
+ * @param calendarGridProps.nextMonthDays {object}
+ * @param calendarGridProps.prevMonthName {string}
+ * @param calendarGridProps.nextMonthName {string}
+ * @param calendarGridProps.currentMonthName {string}
+ * @param calendarGridProps.activeDay {number}
+ * @param calendarGridProps.presentDateObj {object}
+ * @param calendarGridProps.calendarEvents {array}
+ * @param calendarGridProps.handleSelectEvent {function}
  * @returns {JSX.Element}
  */
-function CalendarGrid({
-  currentMonthDays,
-  prevMonthDays,
-  nextMonthDays,
-  prevMonthName,
-  nextMonthName,
-  currentMonthName,
-  activeDay,
-  presentDateObj,
-  calendarEvents,
-  handleSelectEvent,
-}) {
-  const daysForGrid = getDaysForGrid(
-    currentMonthDays,
-    prevMonthDays,
-    nextMonthDays,
-    prevMonthName,
-    nextMonthName,
-    currentMonthName,
-    activeDay,
-    presentDateObj,
-    calendarEvents
-  ).map((day) => {
+function CalendarGrid({ calendarGridProps }) {
+  const { handleSelectEvent } = calendarGridProps;
+
+  const daysForGrid = getDaysForGrid(calendarGridProps).map((day) => {
     const { dayNumber, dayName, isDayDisabled, monthName, isActive, events } =
       day;
 
