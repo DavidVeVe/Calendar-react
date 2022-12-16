@@ -38,7 +38,7 @@ function CalendarDay({
     const parsedEvent = {
       ...event,
       eventTime: parseEventTime(startTimeInMinutes, endTimeInMinutes),
-      startTimeInMinutes: time_convert(startTimeInMinutes)
+      startTimeInMinutes: time_convert(startTimeInMinutes),
     };
     return (
       <DayEvent
