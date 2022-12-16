@@ -16,7 +16,7 @@ const {
 
 /**
  * Description: Calendar component
- * @param date
+ * @param date - {object}
  * @returns {JSX.Element}
  * @constructor
  */

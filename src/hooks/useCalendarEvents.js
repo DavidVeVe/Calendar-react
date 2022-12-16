@@ -5,6 +5,10 @@ import { calendarEventsMock } from "../mocks/calendarEventsMock";
 
 const { TOGGLE_MODAL, SELECT_EVENT } = CALENDAR_EVENTS;
 
+/**
+ * Description Calendar Events hook
+ * @returns {{calendarEvents, selectEvent: selectEvent, selectedEventObj, showModal, toggleModal: toggleModal}}
+ */
 export const useCalendarEvents = () => {
   const [{ showModal, calendarEvents, selectedEventObj }, dispatch] = useReducer(
     calendarEventsReducer,

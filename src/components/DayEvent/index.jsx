@@ -1,3 +1,9 @@
+/**
+ * @param event - {object}
+ * @param handleSelectEvent - {function}
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function DayEvent({ event, handleSelectEvent }) {
   const { eventTime, eventName } = event;
   return (
