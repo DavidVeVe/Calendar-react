@@ -1,3 +1,4 @@
+import { getButtonClassNames, getTextClassNames } from "./helper";
 import "./eventModal.scss";
 
 /**
@@ -16,26 +17,10 @@ function EventModal({ showModal, toggleModal, event }) {
     duration,
     isFinished,
     recorded,
-    material,
+    material = [],
     startTimeInMinutes,
     avatar,
   } = event;
-
-  const getButtonClassNames = () => {
-    const initialClassName = "calendar__modal__body__content__bottom";
-    const isRecordedClassName = ` calendar__modal__body__content__bottom${
-      recorded ? "--recorded" : ""
-    }`;
-    return `${initialClassName}${isRecordedClassName}`;
-  };
-
-  const getTextClassNames = () => {
-    const initialClassnames = "calendar__modal__body__content--text";
-    const isRecordedClassName = ` calendar__modal__body__content--text${
-      recorded ? "--recorded" : ""
-    }`;
-    return `${initialClassnames}${isRecordedClassName}`;
-  };
 
   const materialLinks = material.map((item) => {
     return (
@@ -70,33 +55,26 @@ function EventModal({ showModal, toggleModal, event }) {
           <div className="calendar__modal__body__content__top">
             <div>
               <p className="calendar__modal__body__content--subtitle">Date</p>
-              <span className={getTextClassNames()}>
-                {date}
-              </span>
+              <span className={getTextClassNames(recorded)}>{date}</span>
             </div>
             <div>
               <p className="calendar__modal__body__content--subtitle">Time</p>
-              <span className={getTextClassNames()}>
-                {startTimeInMinutes}
-              </span>
+              <span className={getTextClassNames(recorded)}>{startTimeInMinutes}</span>
             </div>
             <div>
               <p className="calendar__modal__body__content--subtitle">
                 Duration
               </p>
-              <span className={getTextClassNames()}>
-                {duration}
-              </span>
+              <span className={getTextClassNames(recorded)}>{duration}</span>
             </div>
           </div>
-          <button className={getButtonClassNames()}>
+          <button className={getButtonClassNames(recorded)}>
             {recorded ? "Watch recording" : "Join"}
           </button>
         </div>
         <div className="calendar__modal__body__footer">
           <p>Material:</p>
           <div className="calendar__modal__body__footer__links">
-            {" "}
             {materialLinks}
           </div>
         </div>

@@ -88,8 +88,8 @@ export const calendarEventsMock = [
         startTimeInMinutes: 860,
         endTimeInMinutes: 900,
         duration: "30 minutes",
-        recorded: true,
-        isFinished: true,
+        recorded: false,
+        isFinished: false,
         material: [
           { name: "Video Listening Introduction", link: "www.google.com" },
           { name: "Video Listening Introduction", link: "www.google.com" },
