@@ -1,5 +1,3 @@
-import "./dayEvent.scss";
-
 function DayEvent({ event, handleSelectEvent }) {
   const { eventTime, eventName } = event;
   return (

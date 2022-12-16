@@ -1,5 +1,5 @@
 import { MONTHS_SHORT } from "../../constants";
-import { getClassNames, parseEventTime } from "./helper";
+import { getClassNames, parseEventTime, time_convert } from "./helper";
 import DayEvent from "../DayEvent";
 import "./calendarDay.scss";
 
@@ -38,6 +38,7 @@ function CalendarDay({
     const parsedEvent = {
       ...event,
       eventTime: parseEventTime(startTimeInMinutes, endTimeInMinutes),
+      startTimeInMinutes: time_convert(startTimeInMinutes)
     };
     return (
       <DayEvent
