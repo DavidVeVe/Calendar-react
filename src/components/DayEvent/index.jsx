@@ -1,8 +1,14 @@
 import "./dayEvent.scss";
 
-function DayEvent({ eventName, eventTime, toggleModal }) {
+function DayEvent({ event, handleSelectEvent }) {
+  const { eventTime, eventName } = event;
   return (
-    <button className="calendar-day__events__event" onClick={toggleModal}>
+    <button
+      className="calendar-day__events__event"
+      onClick={() => {
+        handleSelectEvent(event);
+      }}
+    >
       <span className="calendar-day__events__event__event-time">
         {eventTime}
       </span>

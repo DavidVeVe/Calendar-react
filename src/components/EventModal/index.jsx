@@ -1,14 +1,23 @@
 import "./eventModal.scss";
 
-function EventModal({ showModal, toggleModal }) {
+/**
+ * @param showModal - {boolean}
+ * @param toggleModal - {function}
+ * @param event - {object}
+ * @returns {JSX.Element}
+ * @constructor
+ */
+function EventModal({ showModal, toggleModal, event }) {
+  const { userName = '' } = event;
+
   const modal = showModal && (
-    <>
-      <section
+    <div>
+      <div
         className="calendar__modal calendar__modal__overlay"
         onClick={toggleModal}
-      ></section>
-      <div className="calendar__modal--body"></div>
-    </>
+      />
+      <section className="calendar__modal--body">{userName}</section>
+    </div>
   );
 
   return modal;

@@ -21,7 +21,13 @@ const {
  * @constructor
  */
 function Calendar({ date }) {
-  const { showModal, toggleModal, calendarEvents } = useCalendarEvents();
+  const {
+    showModal,
+    toggleModal,
+    calendarEvents,
+    selectedEventObj,
+    selectEvent,
+  } = useCalendarEvents();
 
   const presentMonthNumber = date.getMonth();
   const presentYearNumber = date.getFullYear();
@@ -33,7 +39,6 @@ function Calendar({ date }) {
     presentYearNumber,
     presentDayNumber: presentActiveDayNumber,
   };
-
 
   const [month, setMonth] = useState(presentMonthNumber);
 
@@ -106,9 +111,18 @@ function Calendar({ date }) {
     nextMonthNumber
   );
 
+  const handleSelectEvent = (value) => {
+    toggleModal();
+    selectEvent(value);
+  };
+
   return (
     <div className="calendar">
-      <EventModal showModal={showModal} toggleModal={toggleModal} />
+      <EventModal
+        showModal={showModal}
+        toggleModal={toggleModal}
+        event={selectedEventObj}
+      />
       <CalendarNavigation
         getNextMonth={() => setNewMonth({ ...setNewMonthArgs }, true)}
         getPrevMonth={() => setNewMonth({ ...setNewMonthArgs }, false)}
@@ -125,7 +139,7 @@ function Calendar({ date }) {
         activeDay={activeDay}
         presentDateObj={presentDateObj}
         calendarEvents={calendarEvents}
-        toggleModal={toggleModal}
+        handleSelectEvent={handleSelectEvent}
       />
     </div>
   );

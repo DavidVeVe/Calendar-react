@@ -1,10 +1,12 @@
 import { CALENDAR_EVENTS } from "../constants";
-
-const { TOGGLE_MODAL } = CALENDAR_EVENTS;
+const { TOGGLE_MODAL, SELECT_EVENT } = CALENDAR_EVENTS;
 
 export const calendarEventsReducer = (state, action) => {
-  switch (action.type) {
+  const { type, showModal, selectedEventObj } = action;
+  switch (type) {
     case TOGGLE_MODAL:
-      return { ...state, showModal: action.showModal };
+      return { ...state, showModal: showModal };
+    case SELECT_EVENT:
+      return { ...state, selectedEventObj: selectedEventObj };
   }
 };

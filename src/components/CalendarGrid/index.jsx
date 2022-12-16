@@ -14,7 +14,7 @@ const { getDaysForGrid } = helper;
  * @param activeDay {number}
  * @param presentDateObj {object}
  * @param calendarEvents {array}
- * @param toggleModal {function}
+ * @param handleSelectEvent {function}
  * @returns {JSX.Element}
  */
 function CalendarGrid({
@@ -27,7 +27,7 @@ function CalendarGrid({
   activeDay,
   presentDateObj,
   calendarEvents,
-  toggleModal,
+  handleSelectEvent,
 }) {
   const daysForGrid = getDaysForGrid(
     currentMonthDays,
@@ -52,7 +52,7 @@ function CalendarGrid({
         monthName={monthName}
         isActive={isActive}
         events={events}
-        toggleModal={toggleModal}
+        handleSelectEvent={handleSelectEvent}
       />
     );
   });
