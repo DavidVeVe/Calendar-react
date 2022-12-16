@@ -46,6 +46,14 @@
       line-height: 1.5;
       padding: 3px 20px;
       position: relative;
+      border: none;
+      transition: .1s;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.02);
+        transition: .1s;
+      }
 
       &__event-time {
         &:before {
