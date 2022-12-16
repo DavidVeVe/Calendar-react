@@ -16,9 +16,9 @@ export const calendarEventsMock = [
         material: [
           {
             name: "Video Listening Introduction",
-            link: "www.google.com",
+            link: "https://www.google.com/",
           },
-          { name: "Video Listening Introduction", link: "www.google.com" },
+          { name: "Video Listening Introduction", link: "https://www.google.com/" },
         ],
       },
     ],
@@ -38,8 +38,8 @@ export const calendarEventsMock = [
         recorded: true,
         isFinished: true,
         material: [
-          { name: "Video Listening Introduction", link: "www.google.com" },
-          { name: "Video Listening Introduction", link: "www.google.com" },
+          { name: "Video Listening Introduction", link: "https://www.google.com/" },
+          { name: "Video Listening Introduction", link: "https://www.google.com/" },
         ],
       },
       {
@@ -54,8 +54,8 @@ export const calendarEventsMock = [
         recorded: true,
         isFinished: true,
         material: [
-          { name: "Video Listening Introduction", link: "www.google.com" },
-          { name: "Video Listening Introduction", link: "www.google.com" },
+          { name: "Video Listening Introduction", link: "https://www.google.com/" },
+          { name: "Video Listening Introduction", link: "https://www.google.com/" },
         ],
       },
     ],
@@ -75,8 +75,8 @@ export const calendarEventsMock = [
         recorded: true,
         isFinished: true,
         material: [
-          { name: "Video Listening Introduction", link: "www.google.com" },
-          { name: "Video Listening Introduction", link: "www.google.com" },
+          { name: "Video Listening Introduction", link: "https://www.google.com/" },
+          { name: "Video Listening Introduction", link: "https://www.google.com/" },
         ],
       },
       {
@@ -91,8 +91,8 @@ export const calendarEventsMock = [
         recorded: false,
         isFinished: false,
         material: [
-          { name: "Video Listening Introduction", link: "www.google.com" },
-          { name: "Video Listening Introduction", link: "www.google.com" },
+          { name: "Video Listening Introduction", link: "https://www.google.com/" },
+          { name: "Video Listening Introduction", link: "https://www.google.com/" },
         ],
       },
     ],
@@ -112,8 +112,8 @@ export const calendarEventsMock = [
         recorded: true,
         isFinished: true,
         material: [
-          { name: "Video Listening Introduction", link: "www.google.com" },
-          { name: "Video Listening Introduction", link: "www.google.com" },
+          { name: "Video Listening Introduction", link: "https://www.google.com/" },
+          { name: "Video Listening Introduction", link: "https://www.google.com/" },
         ],
       },
       {
@@ -128,8 +128,8 @@ export const calendarEventsMock = [
         recorded: true,
         isFinished: true,
         material: [
-          { name: "Video Listening Introduction", link: "www.google.com" },
-          { name: "Video Listening Introduction", link: "www.google.com" },
+          { name: "Video Listening Introduction", link: "https://www.google.com/" },
+          { name: "Video Listening Introduction", link: "https://www.google.com/" },
         ],
       },
     ],
