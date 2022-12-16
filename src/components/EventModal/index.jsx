@@ -22,9 +22,9 @@ function EventModal({ showModal, toggleModal, event }) {
     avatar,
   } = event;
 
-  const materialLinks = material.map((item) => {
+  const materialLinks = material.map((item, index) => {
     return (
-      <a href={item.link} target="_blank">
+      <a key={index} href={item.link} target="_blank">
         {item.name}
       </a>
     );
