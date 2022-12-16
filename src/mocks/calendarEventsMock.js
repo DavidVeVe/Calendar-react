@@ -4,6 +4,7 @@ export const calendarEventsMock = [
     events: [
       {
         userName: "Renata",
+        date: "Sunday 16th October 2022",
         eventName: "Speaking class",
         topic: "Food",
         startTimeInMinutes: 540,
@@ -26,6 +27,7 @@ export const calendarEventsMock = [
     events: [
       {
         userName: "David",
+        date: "Sunday 2nd October 2022",
         eventName: "Meeting",
         topic: "Stand up",
         startTimeInMinutes: 540,
@@ -39,6 +41,7 @@ export const calendarEventsMock = [
         ],
       },
       {
+        date: "Sunday 2nd October 2022",
         userName: "Armando",
         eventName: "Meeting3",
         topic: "Stand up3",
@@ -58,6 +61,7 @@ export const calendarEventsMock = [
     date: "Tuesday 16th December 2022",
     events: [
       {
+        date: "Tuesday 16th December 2022",
         userName: "Camila",
         eventName: "Meeting1",
         topic: "Stand up1",
@@ -72,6 +76,7 @@ export const calendarEventsMock = [
         ],
       },
       {
+        date: "Tuesday 16th December 2022",
         userName: "Michelle",
         eventName: "Meeting2",
         topic: "Stand up2",
@@ -92,6 +97,7 @@ export const calendarEventsMock = [
     events: [
       {
         userName: "Renata",
+        date: "Sunday 5th February 2023",
         eventName: "Meeting1",
         topic: "Stand up1",
         startTimeInMinutes: 1000,
@@ -107,6 +113,7 @@ export const calendarEventsMock = [
       {
         userName: "Sofia",
         eventName: "Meeting4",
+        date: "Sunday 5th February 2023",
         topic: "Stand up4",
         startTimeInMinutes: 540,
         endTimeInMinutes: 570,
