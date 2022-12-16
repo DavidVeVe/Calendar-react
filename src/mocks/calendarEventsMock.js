@@ -4,6 +4,7 @@ export const calendarEventsMock = [
     events: [
       {
         userName: "Renata",
+        avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         date: "Sunday 16th October 2022",
         eventName: "Speaking class",
         topic: "Food",
@@ -27,6 +28,7 @@ export const calendarEventsMock = [
     events: [
       {
         userName: "David",
+        avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         date: "Sunday 2nd October 2022",
         eventName: "Meeting",
         topic: "Stand up",
@@ -43,6 +45,7 @@ export const calendarEventsMock = [
       {
         date: "Sunday 2nd October 2022",
         userName: "Armando",
+        avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         eventName: "Meeting3",
         topic: "Stand up3",
         startTimeInMinutes: 700,
@@ -63,6 +66,7 @@ export const calendarEventsMock = [
       {
         date: "Tuesday 16th December 2022",
         userName: "Camila",
+        avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         eventName: "Meeting1",
         topic: "Stand up1",
         startTimeInMinutes: 600,
@@ -78,6 +82,7 @@ export const calendarEventsMock = [
       {
         date: "Tuesday 16th December 2022",
         userName: "Michelle",
+        avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         eventName: "Meeting2",
         topic: "Stand up2",
         startTimeInMinutes: 860,
@@ -97,6 +102,7 @@ export const calendarEventsMock = [
     events: [
       {
         userName: "Renata",
+        avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         date: "Sunday 5th February 2023",
         eventName: "Meeting1",
         topic: "Stand up1",
@@ -112,6 +118,7 @@ export const calendarEventsMock = [
       },
       {
         userName: "Sofia",
+        avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         eventName: "Meeting4",
         date: "Sunday 5th February 2023",
         topic: "Stand up4",
