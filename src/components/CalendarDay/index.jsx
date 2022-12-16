@@ -11,6 +11,7 @@ import "./calendarDay.scss";
  * @param monthName - {string}
  * @param isActive - {boolean}
  * @param events - {array}
+ * @param toggleModal - {function}
  * @returns {JSX.Element}
  * @constructor
  */
@@ -21,6 +22,7 @@ function CalendarDay({
   monthName,
   isActive,
   events,
+  toggleModal,
 }) {
   const { elementClassName, blockClassName } = getClassNames(
     isDayDisabled,
@@ -29,7 +31,14 @@ function CalendarDay({
 
   const dayEvents = events.map((event) => {
     const { eventName, startTimeInMinutes, endTimeInMinutes } = event;
-    return <DayEvent key={eventName} eventName={eventName} eventTime={parseEventTime(startTimeInMinutes, endTimeInMinutes)} />;
+    return (
+      <DayEvent
+        key={eventName}
+        eventName={eventName}
+        eventTime={parseEventTime(startTimeInMinutes, endTimeInMinutes)}
+        toggleModal={toggleModal}
+      />
+    );
   });
 
   const dayText = monthName

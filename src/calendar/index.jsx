@@ -125,6 +125,7 @@ function Calendar({ date }) {
         activeDay={activeDay}
         presentDateObj={presentDateObj}
         calendarEvents={calendarEvents}
+        toggleModal={toggleModal}
       />
     </div>
   );
