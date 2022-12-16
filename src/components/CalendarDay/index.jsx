@@ -1,5 +1,5 @@
 import { MONTHS_SHORT } from "../../constants";
-import { getClassNames } from "./helper";
+import { getClassNames, parseEventTime } from "./helper";
 import DayEvent from "../DayEvent";
 import "./calendarDay.scss";
 
@@ -28,8 +28,8 @@ function CalendarDay({
   );
 
   const dayEvents = events.map((event) => {
-    const { eventName } = event;
-    return <DayEvent key={eventName} eventName={eventName} />;
+    const { eventName, startTimeInMinutes, endTimeInMinutes } = event;
+    return <DayEvent key={eventName} eventName={eventName} eventTime={parseEventTime(startTimeInMinutes, endTimeInMinutes)} />;
   });
 
   const dayText = monthName
@@ -41,9 +41,7 @@ function CalendarDay({
       <div className={blockClassName}>
         <span>{dayText}</span>
       </div>
-        <div className="calendar-day__events">
-          {dayEvents}
-        </div>
+      <div className="calendar-day__events">{dayEvents}</div>
     </div>
   );
 }

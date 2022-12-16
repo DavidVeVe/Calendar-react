@@ -27,3 +27,25 @@ export const getClassNames = (prevMonthCondition, isActive) => {
     blockClassName: `${blockClassWithPrevMonthCondition}${blockClassNameActiveDay}`,
   };
 };
+
+/**
+ * Description: Converts a given number (total minutes) to hours and minutes
+ * @param num - {number}
+ * @returns {string}
+ */
+export function time_convert(num) {
+  const hours = Math.floor(num / 60);
+  const minutes = num % 60;
+  const parsedMinutes = minutes === 0 ? '00' : minutes
+  return `${hours}:${parsedMinutes}`;
+}
+
+/**
+ * Description: Parses start and end time to string used in event
+ * @param startTimeInMinutes - {number}
+ * @param endTimeInMinutes - {number}
+ * @returns {string}
+ */
+export const parseEventTime = (startTimeInMinutes, endTimeInMinutes) => {
+  return `${time_convert(startTimeInMinutes)} - ${time_convert(endTimeInMinutes)}`
+};
