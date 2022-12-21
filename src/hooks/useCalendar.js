@@ -12,7 +12,7 @@ const {
   NEXT_MONTH_DAYS_SETTER,
 } = CALENDAR_REDUCER;
 
-const { getDaysInMonth } = helper;
+const { getDaysInMonth, getFormattedMonthConfig, setNewMonth } = helper;
 
 export const useCalendar = (date) => {
   const presentDayNumberHook = date.getDate();
@@ -30,10 +30,17 @@ export const useCalendar = (date) => {
     month: monthHook,
     year: presentYearNumberHook,
     activeDay: activeDayHook,
+    // currentMonthDays: getFormattedMonthConfig(
+    //   getDaysInMonth(presentYearNumberHook, monthHook),
+    //   presentYearNumberHook,
+    //   monthHook
+    // ),
     currentMonthDays: getDaysInMonth(presentYearNumberHook, monthHook),
     prevMonthDays: getDaysInMonth(presentYearNumberHook, prevMonthNumberHook),
     nextMonthDays: getDaysInMonth(presentYearNumberHook, nextMonthNumberHook),
   });
+
+  const { month, year } = calendarObj;
 
   const getToday = () => {
     dispatch({
@@ -64,6 +71,21 @@ export const useCalendar = (date) => {
     dispatch({ type: NEXT_MONTH_DAYS_SETTER, nextMonthDays: value });
   };
 
+  const changeMonth = (isNextMonth) => {
+    setNewMonth(
+      {
+        month,
+        year,
+        monthSetter,
+        yearSetter,
+        currentMonthDaysSetter,
+        prevMonthDaysSetter,
+        nextMonthDaysSetter,
+      },
+      isNextMonth
+    );
+  };
+
   return {
     ...calendarObj,
     getToday,
@@ -72,6 +94,7 @@ export const useCalendar = (date) => {
     currentMonthDaysSetter,
     prevMonthDaysSetter,
     nextMonthDaysSetter,
+    changeMonth
   };
 };
 

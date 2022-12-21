@@ -6,12 +6,7 @@ import { MONTHS } from "../constants";
 import helper from "../helper";
 import { useCalendar, useCalendarEvents } from "../hooks";
 
-const {
-  setNewMonth,
-  getFormattedMonthConfig,
-  setMonthName,
-  createDate,
-} = helper;
+const { getFormattedMonthConfig, setMonthName, createDate } = helper;
 
 /**
  * Description: Calendar component
@@ -31,7 +26,6 @@ function Calendar({ date }) {
   const {
     month,
     presentActiveDayNumber,
-    presentDayNumber,
     presentMonthNumber,
     presentYearNumber,
     year,
@@ -45,6 +39,7 @@ function Calendar({ date }) {
     currentMonthDays,
     prevMonthDays,
     nextMonthDays,
+    changeMonth,
   } = useCalendar(date);
 
   const prevMonthNumber = month - 1;
@@ -90,6 +85,8 @@ function Calendar({ date }) {
     handleSelectEvent,
   };
 
+  const isNextMonth = true;
+
   return (
     <div className="calendar">
       <EventModal
@@ -98,8 +95,9 @@ function Calendar({ date }) {
         event={selectedEventObj}
       />
       <CalendarNavigation
-        getNextMonth={() => setNewMonth({ ...setNewMonthArgs }, true)}
-        getPrevMonth={() => setNewMonth({ ...setNewMonthArgs }, false)}
+        // getNextMonth={() => setNewMonth({ ...setNewMonthArgs }, true)}
+        getNextMonth={changeMonth.bind(null, isNextMonth)}
+        getPrevMonth={changeMonth.bind(null, !isNextMonth)}
         getToday={getToday}
         calendarTitle={`${MONTHS[month]} ${year}`}
       />
