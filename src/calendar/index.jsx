@@ -3,13 +3,12 @@ import CalendarNavigation from "../components/CalendarNavigation";
 import CalendarGrid from "../components/CalendarGrid";
 import EventModal from "../components/EventModal";
 import { MONTHS } from "../constants";
-import { useCalendarEvents } from "../hooks/useCalendarEvents";
 import helper from "../helper";
+import { useCalendar, useCalendarEvents } from "../hooks";
 
 const {
   setNewMonth,
   getFormattedMonthConfig,
-  getDaysInMonth,
   setMonthName,
   createDate,
 } = helper;
@@ -29,55 +28,27 @@ function Calendar({ date }) {
     selectEvent,
   } = useCalendarEvents();
 
-  const presentMonthNumber = date.getMonth();
-  const presentYearNumber = date.getFullYear();
-  const presentDayNumber = date.getDate();
-  const presentActiveDayNumber = presentDayNumber - 1;
-
-  const [month, setMonth] = useState(presentMonthNumber);
+  const {
+    month,
+    presentActiveDayNumber,
+    presentDayNumber,
+    presentMonthNumber,
+    presentYearNumber,
+    year,
+    activeDay,
+    getToday,
+    monthSetter,
+    yearSetter,
+    currentMonthDaysSetter,
+    prevMonthDaysSetter,
+    nextMonthDaysSetter,
+    currentMonthDays,
+    prevMonthDays,
+    nextMonthDays,
+  } = useCalendar(date);
 
   const prevMonthNumber = month - 1;
   const nextMonthNumber = month + 1;
-
-  const [year, setYear] = useState(presentYearNumber);
-
-  const [currentMonthDays, setCurrentMonthDays] = useState(
-    getDaysInMonth(year, month)
-  );
-  const [prevMonthDays, setPrevMonthDays] = useState(
-    getDaysInMonth(year, prevMonthNumber)
-  );
-
-  const [nextMonthDays, setNextMonthDays] = useState(
-    getDaysInMonth(year, nextMonthNumber)
-  );
-
-  const [activeDay, setActiveDay] = useState(presentActiveDayNumber);
-
-  const getToday = () => {
-    setMonth(presentMonthNumber);
-    setYear(presentYearNumber);
-    setActiveDay(presentActiveDayNumber);
-  };
-
-  const monthSetter = (value) => {
-    setMonth(value);
-  };
-  const yearSetter = (value) => {
-    setYear(value);
-  };
-
-  const currentMonthDaysSetter = (value) => {
-    setCurrentMonthDays(value);
-  };
-
-  const prevMonthDaysSetter = (value) => {
-    setPrevMonthDays(value);
-  };
-
-  const nextMonthDaysSetter = (value) => {
-    setNextMonthDays(value);
-  };
 
   const setNewMonthArgs = {
     month,
