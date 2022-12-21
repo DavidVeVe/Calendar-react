@@ -50,7 +50,12 @@ const getFormattedMonthConfig = (daysInCurrentMonth, y, m) => {
             createDate(y, m, day + 1)
           )
         ];
-      return { dayNumber: day + 1, dayName, fullDate: createDate(y, m, day + 1), events: [] };
+      return {
+        dayNumber: day + 1,
+        dayName,
+        fullDate: createDate(y, m, day + 1),
+        events: [],
+      };
     }),
     firstDayIndex: getFirstDayInMonthIndex(createDate(y, m, 1).getDay()),
     lastDayIndex: DAYS_IN_A_WEEK - createDate(y, m + 1, 0).getDay(),
@@ -64,15 +69,17 @@ const getFormattedMonthConfig = (daysInCurrentMonth, y, m) => {
  * @param isNextMonth - {boolean}
  * @returns {{newYear: {(*), (*)}, monthToGetNextMonthDays: *, condition: boolean, monthToGetPrevMonthDays: (*|number), newMonth: {(*), (*)}, newMonthReset: number, monthToGetCurrentDays: (*|number)}}
  */
-const getNewMonthValues = (month, isNextMonth) => ({
-  condition: isNextMonth ? month < 11 : month > 0,
-  newMonthReset: isNextMonth ? 0 : 11,
-  newYear: isNextMonth ? (prev) => prev + 1 : (prev) => prev - 1,
-  newMonth: isNextMonth ? (prev) => prev + 1 : (prev) => prev - 1,
-  monthToGetCurrentDays: isNextMonth ? month + 1 : month - 1,
-  monthToGetPrevMonthDays: isNextMonth ? month : month - 2,
-  monthToGetNextMonthDays: isNextMonth ? month + 2 : month,
-});
+const getNewMonthValues = (year, month, isNextMonth) => {
+  return {
+    condition: isNextMonth ? month < 11 : month > 0,
+    newMonthReset: isNextMonth ? 0 : 11,
+    newYear: isNextMonth ? year + 1 : year - 1,
+    newMonth: isNextMonth ? month + 1 : month - 1,
+    monthToGetCurrentDays: isNextMonth ? month + 1 : month - 1,
+    monthToGetPrevMonthDays: isNextMonth ? month : month - 2,
+    monthToGetNextMonthDays: isNextMonth ? month + 2 : month,
+  }
+};
 
 /**
  * Description: Updates previous, current and next month information when next or previous month event is triggered.
@@ -105,7 +112,7 @@ const setNewMonth = (
     monthToGetCurrentDays,
     monthToGetPrevMonthDays,
     monthToGetNextMonthDays,
-  } = getNewMonthValues(month, isNextMonth);
+  } = getNewMonthValues(year, month, isNextMonth);
 
   if (condition) {
     monthSetter(newMonth);
