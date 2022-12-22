@@ -164,6 +164,21 @@ export const useCalendar = (date) => {
       prevMonthName: setMonthName(createDate(year, prevMonth, 1)),
       nextMonthName: setMonthName(createDate(year, nextMonth, 1)),
       currentMonthName: setMonthName(createDate(year, currentMonth, 1)),
+      currentMonthDays: getFormattedMonthConfig(
+        getDaysInMonth(year, currentMonth),
+        year,
+        currentMonth
+      ),
+      prevMonthDays: getFormattedMonthConfig(
+        getDaysInMonth(year, prevMonth),
+        year,
+        prevMonth
+      ),
+      nextMonthDays: getFormattedMonthConfig(
+        getDaysInMonth(year, nextMonth),
+        year,
+        nextMonth
+      ),
       presentDateObj: {},
     });
   };

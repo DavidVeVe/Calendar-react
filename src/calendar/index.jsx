@@ -1,12 +1,8 @@
-import { useState } from "react";
 import CalendarNavigation from "../components/CalendarNavigation";
 import CalendarGrid from "../components/CalendarGrid";
 import EventModal from "../components/EventModal";
 import { MONTHS } from "../constants";
-import helper from "../helper";
 import { useCalendar, useCalendarEvents } from "../hooks";
-
-const { getFormattedMonthConfig, setMonthName, createDate } = helper;
 
 /**
  * Description: Calendar component
@@ -25,8 +21,7 @@ function Calendar({ date }) {
 
   const calendarHookProps = useCalendar(date);
 
-  const { month, year, getToday, currentMonthDays, changeMonth } =
-    calendarHookProps;
+  const { month, year, getToday, changeMonth } = calendarHookProps;
 
   const handleSelectEvent = (value) => {
     toggleModal();
