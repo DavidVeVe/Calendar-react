@@ -173,7 +173,6 @@ export const useCalendar = (date) => {
       currentMonthDays: getFormattedMonth(currentMonth),
       prevMonthDays: getFormattedMonth(prevMonth),
       nextMonthDays: getFormattedMonth(nextMonth),
-      presentDateObj: {},
     });
   };
 
