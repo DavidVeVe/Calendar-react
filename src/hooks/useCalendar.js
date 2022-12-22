@@ -159,26 +159,20 @@ export const useCalendar = (date) => {
     const prevMonth = isNextMonth ? month : month - 2;
     const currentMonth = isNextMonth ? month + 1 : month - 1;
 
+    const getDays = (properMonth) => getDaysInMonth(year, properMonth);
+
+    const getFormattedMonth = (properMonth) => {
+      return getFormattedMonthConfig(getDays(properMonth), year, properMonth);
+    };
+
     dispatch({
       type: CHANGE_MONTH,
       prevMonthName: setMonthName(createDate(year, prevMonth, 1)),
       nextMonthName: setMonthName(createDate(year, nextMonth, 1)),
       currentMonthName: setMonthName(createDate(year, currentMonth, 1)),
-      currentMonthDays: getFormattedMonthConfig(
-        getDaysInMonth(year, currentMonth),
-        year,
-        currentMonth
-      ),
-      prevMonthDays: getFormattedMonthConfig(
-        getDaysInMonth(year, prevMonth),
-        year,
-        prevMonth
-      ),
-      nextMonthDays: getFormattedMonthConfig(
-        getDaysInMonth(year, nextMonth),
-        year,
-        nextMonth
-      ),
+      currentMonthDays: getFormattedMonth(currentMonth),
+      prevMonthDays: getFormattedMonth(prevMonth),
+      nextMonthDays: getFormattedMonth(nextMonth),
       presentDateObj: {},
     });
   };
