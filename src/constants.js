@@ -1,4 +1,4 @@
-export const DAYS_OF_THE_WEEK = {
+export const DAYS_OF_THE_WEEK_OBJ = {
   Sunday: "SUN",
   Monday: "MON",
   Tuesday: "TUE",
@@ -69,3 +69,13 @@ export const CALENDAR_REDUCER = {
   NEXT_MONTH_DAYS_SETTER: "NEXT_MONTH_DAYS_SETTER",
   CHANGE_MONTH: "CHANGE_MONTH",
 };
+
+export const DAYS_OF_THE_WEEK = [
+  "MON",
+  "TUE",
+  "WEN",
+  "THU",
+  "FRI",
+  "SAT",
+  "SUN",
+];

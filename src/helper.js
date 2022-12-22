@@ -1,4 +1,4 @@
-import { DAYS_OF_THE_WEEK, DAYS_IN_A_WEEK } from "./constants";
+import { DAYS_OF_THE_WEEK_OBJ, DAYS_IN_A_WEEK } from "./constants";
 
 /**
  * Description: updates dayIndex to slice days array with the correct dayIndex
@@ -45,7 +45,7 @@ const getFormattedMonthConfig = (daysInCurrentMonth, y, m) => {
   return {
     days: [...Array(daysInCurrentMonth).keys()].map((day) => {
       const dayName =
-        DAYS_OF_THE_WEEK[
+        DAYS_OF_THE_WEEK_OBJ[
           new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(
             createDate(y, m, day + 1)
           )

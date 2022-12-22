@@ -1,5 +1,6 @@
 import CalendarDay from "../CalendarDay";
 import helper from "./calendarGridHelper";
+import { DAYS_OF_THE_WEEK } from "../../constants";
 import "./calendarGrid.scss";
 
 const { getDaysForGrid } = helper;
@@ -38,7 +39,16 @@ function CalendarGrid({ calendarGridProps }) {
     );
   });
 
-  return <section className="calendar-grid">{daysForGrid}</section>;
+  const daysLabels = DAYS_OF_THE_WEEK.map((day) => {
+    return <span key={day} className="calendar-grid__labels__label">{day}</span>;
+  });
+
+  return (
+    <section className="calendar-grid">
+      <div className="calendar-grid__labels">{daysLabels}</div>
+      <div className="calendar-grid__days">{daysForGrid}</div>
+    </section>
+  );
 }
 
 export default CalendarGrid;
