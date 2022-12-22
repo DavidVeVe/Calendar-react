@@ -7,6 +7,7 @@ const {
   CURRENT_MONTH_DAYS_SETTER,
   PREV_MONTH_DAYS_SETTER,
   NEXT_MONTH_DAYS_SETTER,
+  CHANGE_MONTH,
 } = CALENDAR_REDUCER;
 
 export const calendarReducer = (state, action) => {
@@ -18,6 +19,9 @@ export const calendarReducer = (state, action) => {
     currentMonthDays,
     prevMonthDays,
     nextMonthDays,
+    prevMonthName,
+    nextMonthName,
+    currentMonthName,
   } = action;
 
   switch (type) {
@@ -38,5 +42,7 @@ export const calendarReducer = (state, action) => {
       return { ...state, prevMonthDays };
     case NEXT_MONTH_DAYS_SETTER:
       return { ...state, nextMonthDays };
+    case CHANGE_MONTH:
+      return { ...state, prevMonthName, nextMonthName, currentMonthName };
   }
 };

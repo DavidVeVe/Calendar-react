@@ -25,35 +25,18 @@ function Calendar({ date }) {
 
   const {
     month,
-    presentActiveDayNumber,
-    presentMonthNumber,
-    presentYearNumber,
     year,
     activeDay,
     getToday,
-    monthSetter,
-    yearSetter,
-    currentMonthDaysSetter,
-    prevMonthDaysSetter,
-    nextMonthDaysSetter,
     currentMonthDays,
     prevMonthDays,
     nextMonthDays,
     changeMonth,
+    presentDateObj,
+    prevMonthName,
+    nextMonthName,
+    currentMonthName,
   } = useCalendar(date);
-
-  const prevMonthNumber = month - 1;
-  const nextMonthNumber = month + 1;
-
-  const setNewMonthArgs = {
-    month,
-    year,
-    monthSetter,
-    yearSetter,
-    currentMonthDaysSetter,
-    prevMonthDaysSetter,
-    nextMonthDaysSetter,
-  };
 
   const handleSelectEvent = (value) => {
     toggleModal();
@@ -61,26 +44,14 @@ function Calendar({ date }) {
   };
 
   const calendarGridProps = {
-    currentMonthDays: getFormattedMonthConfig(currentMonthDays, year, month),
-    prevMonthDays: getFormattedMonthConfig(
-      prevMonthDays,
-      year,
-      prevMonthNumber
-    ),
-    nextMonthDays: getFormattedMonthConfig(
-      nextMonthDays,
-      year,
-      nextMonthNumber
-    ),
-    prevMonthName: setMonthName(createDate(year, prevMonthNumber, 1)),
-    nextMonthName: setMonthName(createDate(year, nextMonthNumber, 1)),
-    currentMonthName: setMonthName(createDate(year, month, 1)),
+    currentMonthDays,
+    prevMonthDays,
+    nextMonthDays,
+    prevMonthName,
+    nextMonthName,
+    currentMonthName,
     activeDay,
-    presentDateObj: {
-      presentMonthNumber,
-      presentYearNumber,
-      presentDayNumber: presentActiveDayNumber,
-    },
+    presentDateObj,
     calendarEvents,
     handleSelectEvent,
   };
@@ -95,7 +66,6 @@ function Calendar({ date }) {
         event={selectedEventObj}
       />
       <CalendarNavigation
-        // getNextMonth={() => setNewMonth({ ...setNewMonthArgs }, true)}
         getNextMonth={changeMonth.bind(null, isNextMonth)}
         getPrevMonth={changeMonth.bind(null, !isNextMonth)}
         getToday={getToday}
