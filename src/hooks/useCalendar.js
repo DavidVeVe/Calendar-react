@@ -142,18 +142,16 @@ export const useCalendar = (date) => {
   };
 
   const changeMonth = (isNextMonth) => {
-    setNewMonth(
-      {
-        month,
-        year,
-        monthSetter,
-        yearSetter,
-        currentMonthDaysSetter,
-        prevMonthDaysSetter,
-        nextMonthDaysSetter,
-      },
-      isNextMonth
-    );
+    setNewMonth({
+      month,
+      year,
+      monthSetter,
+      yearSetter,
+      currentMonthDaysSetter,
+      prevMonthDaysSetter,
+      nextMonthDaysSetter,
+      isNextMonth,
+    });
 
     const nextMonth = isNextMonth ? month + 2 : month;
     const prevMonth = isNextMonth ? month : month - 2;

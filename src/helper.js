@@ -78,7 +78,7 @@ const getNewMonthValues = (year, month, isNextMonth) => {
     monthToGetCurrentDays: isNextMonth ? month + 1 : month - 1,
     monthToGetPrevMonthDays: isNextMonth ? month : month - 2,
     monthToGetNextMonthDays: isNextMonth ? month + 2 : month,
-  }
+  };
 };
 
 /**
@@ -92,18 +92,16 @@ const getNewMonthValues = (year, month, isNextMonth) => {
  * @param nextMonthDaysSetter - {function}
  * @param isNextMonth - {boolean}
  */
-const setNewMonth = (
-  {
-    month,
-    year,
-    monthSetter,
-    yearSetter,
-    currentMonthDaysSetter,
-    prevMonthDaysSetter,
-    nextMonthDaysSetter,
-  },
-  isNextMonth
-) => {
+const setNewMonth = ({
+  month,
+  year,
+  monthSetter,
+  yearSetter,
+  currentMonthDaysSetter,
+  prevMonthDaysSetter,
+  nextMonthDaysSetter,
+  isNextMonth,
+}) => {
   const {
     condition,
     newMonthReset,
