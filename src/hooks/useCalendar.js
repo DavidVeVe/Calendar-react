@@ -85,6 +85,30 @@ export const useCalendar = (date) => {
       month: monthHook,
       year: presentYearNumberHook,
       activeDay: activeDayHook,
+      prevMonthName: setMonthName(
+        createDate(presentYearNumberHook, prevMonthNumberHook, 1)
+      ),
+      nextMonthName: setMonthName(
+        createDate(presentYearNumberHook, nextMonthNumberHook, 1)
+      ),
+      currentMonthName: setMonthName(
+        createDate(presentYearNumberHook, monthHook, 1)
+      ),
+      currentMonthDays: getFormattedMonthConfig(
+        currentMonthDaysNumber,
+        presentYearNumberHook,
+        monthHook
+      ),
+      prevMonthDays: getFormattedMonthConfig(
+        prevMonthDaysNumber,
+        presentYearNumberHook,
+        monthHook
+      ),
+      nextMonthDays: getFormattedMonthConfig(
+        nextMonthDaysNumber,
+        presentYearNumberHook,
+        monthHook
+      ),
     });
   };
 

@@ -31,6 +31,12 @@ export const calendarReducer = (state, action) => {
         month,
         year,
         activeDay,
+        prevMonthName,
+        nextMonthName,
+        currentMonthName,
+        currentMonthDays,
+        prevMonthDays,
+        nextMonthDays,
       };
     case MONTH_SETTER:
       return { ...state, month };

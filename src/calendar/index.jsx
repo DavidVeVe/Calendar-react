@@ -23,37 +23,14 @@ function Calendar({ date }) {
     selectEvent,
   } = useCalendarEvents();
 
-  const {
-    month,
-    year,
-    activeDay,
-    getToday,
-    currentMonthDays,
-    prevMonthDays,
-    nextMonthDays,
-    changeMonth,
-    presentDateObj,
-    prevMonthName,
-    nextMonthName,
-    currentMonthName,
-  } = useCalendar(date);
+  const calendarHookProps = useCalendar(date);
+
+  const { month, year, getToday, currentMonthDays, changeMonth } =
+    calendarHookProps;
 
   const handleSelectEvent = (value) => {
     toggleModal();
     selectEvent(value);
-  };
-
-  const calendarGridProps = {
-    currentMonthDays,
-    prevMonthDays,
-    nextMonthDays,
-    prevMonthName,
-    nextMonthName,
-    currentMonthName,
-    activeDay,
-    presentDateObj,
-    calendarEvents,
-    handleSelectEvent,
   };
 
   const isNextMonth = true;
@@ -71,7 +48,13 @@ function Calendar({ date }) {
         getToday={getToday}
         calendarTitle={`${MONTHS[month]} ${year}`}
       />
-      <CalendarGrid calendarGridProps={calendarGridProps} />
+      <CalendarGrid
+        calendarGridProps={{
+          ...calendarHookProps,
+          calendarEvents,
+          handleSelectEvent,
+        }}
+      />
     </div>
   );
 }
